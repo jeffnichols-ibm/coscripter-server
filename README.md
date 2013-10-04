@@ -80,3 +80,8 @@ PASSWORD_HERE is the password specified in the file config/database.yml.
 	./script/server
 
 	Point your browser at http://localhost:3000 to see if it worked
+
+License
+-------
+
+The CoScripter source is provided as-is under the Mozilla Public License.  This code has not been actively maintained since at least 2012 so your mileage my vary.
