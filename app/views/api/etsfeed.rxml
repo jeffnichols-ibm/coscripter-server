@@ -1,0 +1,26 @@
+# (C) Copyright IBM Corp. 2010
+
+xml.instruct! :xml, :version=>"1.0" 
+xml.tag!('tag-entries',"page"=>@page,"items_per_page"=>@items_per_page){
+        # <next-walkable-page>URL OF THE NEXT CHUNK OF DATA TO GRAB*</next-walkable-page>
+	for tag in @tags
+	  xml.tag!('tag-entry'){
+		  xml.title("CoScripter: #{tag.procedure.title}")
+		  xml.tag!('uri-value',url_for(:controller=>"browse",:action=>"script",:id=>tag.procedure.id,:only_path=>false))
+		  xml.tag!('uri-type',"web")
+		  xml.description("#{tag.procedure.title}")
+		  xml.author{
+			xml.email(tag.person.email)
+			xml.name(tag.person.name)
+		  }
+                 xml.tag!('creation-date',tag.created_at.strftime('%Y-%m-%d %H:%M:%S.000'))
+                 xml.tag!('modification-date',tag.updated_at.strftime('%Y-%m-%d %H:%M:%S.000'))
+		  xml.tag!('private_uri',false)
+		  xml.tag!('tag'){
+		    xml.tag!('tag-text',tag.clean_name)
+		    xml.tag!('tag-type')
+		  }
+	  }
+	end 
+}
+

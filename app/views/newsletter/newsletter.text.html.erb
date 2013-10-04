@@ -1,0 +1,105 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<style type="text/css">
+a:link, a:visited {
+	text-decoration: none;
+	color: blue;
+}
+li {
+	margin-bottom: 6px;
+}
+</style>
+<h2>CoScripter Newsletter</h2>
+
+<p>
+Greetings from CoScripter! This is a bi-weekly newsletter that contains
+information about scripts that might be interesting to you, news about what
+scripts your friends are using, and tips for getting the most out of
+CoScripter.  To unsubscribe, click the link at the bottom of this email.
+</p>
+
+<% if @comments.length > 0 %>
+<p>
+<b>Recent comments to your scripts and followups to your comments:</b>
+<ul>
+<% for comment in @comments %>
+  <li><%= h comment.person.name %>: <%= h snip(comment.comment, 80) %> <%= link_to "(more)", :controller => :browse, :action => :script, :id => comment.procedure.id, :anchor => "comments", :only_path => false, :source => "newsletter" %>
+<% end %>
+</ul>
+</p>
+<% end %>
+
+<% if @modifications.length > 0 %>
+<p>
+<b>Recent modifications to your scripts:</b>
+<ul>
+<% for mod in @modifications %>
+<li> <%= mod.person.name %> modified <%= link_to mod.procedure.title,
+	:controller => :browse, :action => :script, :id => mod.procedure.id,
+	:only_path => false, :source => "newsletter" %> on <%= mod.modified_at.strftime("%e %B") %>
+<% end %>
+</ul>
+</p>
+<% end %>
+
+<% if @runs.length > 0 %>
+<p>
+<b>People have been using your scripts!</b>
+<ul>
+<% for run in @runs %>
+<li> <%= run.person.name %> ran <%= link_to run.procedure.title,
+	:controller => :browse, :action => :script, :id => run.procedure.id,
+	:only_path => false, :source => "newsletter" %> on <%= run.executed_at.strftime("%e %B") %>
+<% end %>
+</ul>
+</p>
+<% end %>
+
+<% if @executed.length > 0 %>
+<p>
+<b>What scripts have your friends been using?</b>
+<ul>
+<% for friend in @executed.keys.sort { |p, q| p.name <=> q.name } %>
+<li> <%= h friend.name %> ran
+<%= render :partial => "newsletter/scriptlist", :object => @executed[friend] %>
+<% end %>
+</ul>
+</p>
+<% end %>
+
+<% if @created.length > 0 %>
+<p>
+<b>Your friends made some new scripts!</b>
+<ul>
+<% for friend in @created.keys.sort { |p, q| p.name <=> q.name } %>
+<li> <%= h friend.name %> created
+<%= render :partial => "newsletter/scriptlist", :object => @created[friend] %>
+<% end %>
+</ul>
+</p>
+<% end %>
+
+<% if @wishes.length > 0 %>
+<p>
+<b>Your friends have wished for help with some websites!</b>  Can you help them out by creating CoScripts to solve their problems?
+<ul>
+<% for wish in @wishes %>
+<li> <%= h wish.person.name %>: <%= h snip(wish.wish, 80) %> <%= link_to "(more)", :controller => :browse, :action => :wish, :id => wish.id, :only_path => false, :source => "newsletter" %>
+<% end %>
+</ul>
+</p>
+<% end %>
+
+<p>
+<b>How are my friends defined?</b>
+</p>
+<p>
+CoScripter relied on internal organizational social networks to find your friends. Maybe someone will add support for external social networks.
+</p>
+
+<hr/>
+<p>
+CoScripter Newsletter is a bi-weekly email sent out to users of the
+CoScripter system.  To unsubscribe, <%= link_to "click here",
+:controller => :mailer, :action => :unsub, :id => @person.profile_id,
+:only_path => false %>.
+</p>

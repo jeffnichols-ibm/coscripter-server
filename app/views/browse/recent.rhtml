@@ -1,0 +1,25 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter: Recently modified scripts" %>
+<% @page_feed_options = {:controller => 'atom', :action => 'recent'} %>
+
+<div class="leftcolumn15"><div class="leftcolumn_inner">
+<div id="tagcloud_panel">
+  <%= render :partial => "tagcloud", :object =>@tagcloud %>
+</div>
+</div></div>
+<div class="rightcolumn85"><div class="rightcolumn_inner">
+
+<h1>
+<span class="atombutton">
+    <%= link_to(image_tag("feed-icon-16x16.png"),
+	:controller => 'atom', :action => 'recent') %>
+</span>
+Recently modified scripts</h1>
+
+<%= render :partial => "paginator", :locals => {:paginator => @proc_pages} %>
+<br clear="both"/>
+
+<%= render :partial => 'procview', :locals => { :hidebuttons => false } %>
+<%= render :partial => "paginator", :locals => {:paginator => @proc_pages} %>
+
+</div></div>

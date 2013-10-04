@@ -1,0 +1,16 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if scriptlist.length == 1 %>
+	<%= scriptlist[0].nil? ? "a private script" :
+		link_to(h(scriptlist[0].title),
+			:controller => :browse, :action => :script,
+			:id => scriptlist[0].id,
+			:only_path => false, :newsletter => true) %>
+<% else %>
+	<% i = scriptlist.length - 1 %>
+	<% for script in scriptlist.sort { |x, y| (x.nil? ? "a private script" : x.title) <=> (y.nil? ? "a private script" : y.title) } %>
+		<% if script.nil? %>a private script<% else %>
+		<%= link_to(h(script.title), :controller => :browse,
+			:action => :script, :id => script.id, :only_path => false, :source => "newsletter") %><% end %><% i = i - 1 %><% if i == 0 %> and <% elsif i > 0 %>, <% end %>
+	<% end %>
+<% end %>
+

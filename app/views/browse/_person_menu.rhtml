@@ -1,0 +1,4 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<p class="person_menu"><%= link_to_unless(controller.action_name == "person", "Scripts", :action => "person", :id => person.shortname)%> |
+<%= link_to_unless(controller.action_name == "wishlist", "Wishlist", :action => "wishlist", :id => person.shortname)%> |
+<%= link_to_unless(controller.action_name == "profile", "Profile", :action => "profile", :id => person.shortname)%></p>

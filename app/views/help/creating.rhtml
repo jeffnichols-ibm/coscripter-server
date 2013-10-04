@@ -1,0 +1,115 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="helptext">
+<h1>Creating new scripts</h1>
+
+<p>In order to create a script, you will need to install the CoScripter
+sidebar for Firefox.  Follow the instructions on <%= link_to "the download
+page", :controller => :browse, :action => :extension %> to install it.
+</p>
+<p>
+After installing the extension, open the CoScripter sidebar by choosing
+"CoScripter" from the "Tools" menu in Firefox.  CoScripter will open in the
+left side of your browser window:
+</p>
+
+<div class="help-div">
+<%= image_tag "sidebar-relevant.png", :alt => "CoScripter sidebar",
+  :class => "help-image" %>
+</div>
+
+<p>
+To create a new script, click on the New (<%= image_tag "new.gif", :alt =>
+"new" %>) icon.  The sidebar will now display a blank script.  If you wish,
+type in a title for your script (you can change this later).  If you want
+your script to be private, click the "Private" checkbox (see also the
+documentation about <%= link_to "script privacy", :action => :privacy %>).
+</p>
+
+<div class="help-div">
+<%= image_tag "sidebar-new.png", :alt => "Creating a new script",
+  :class => "help-image" %>
+</div>
+
+<p>
+When you create a new script, CoScripter is automatically in "record" mode.
+That means it is now recording the actions you are taking on the web.  For
+example, try typing "http://google.com" into the location bar of your
+browser.  CoScripter will record this step into your script as "Go to
+http://google.com".
+</p>
+
+<p
+>Now if you click on a link on a web page, or type text into a field on a
+web page, CoScripter will record that as another step in your script.  Try
+this out and see what CoScripter records.
+</p>
+
+<p>
+You can also type your own instructions into your script.  CoScripter
+understands a simple language for doing things on the web; you can read
+about CoScripter's <%= link_to "scripting language", :action => :language %>
+if you want to learn more.  You can also read the scripts other people have
+created to see what else CoScripter can do.
+</p>
+
+<p>
+Once you are finished recording your script, click the Save (
+<%= image_tag "save-wiki.gif", :alt => "save" %>) button at the top of the
+CoScripter window.
+</p>
+
+<p>
+<b>Note that every script you create is automatically saved on the
+CoScripter website for other people to view and run!</b>  The exception to
+this rule is private scripts, which are only visible to you when you are
+logged in to the system.
+</p>
+
+<p>
+Go ahead! Record your own scripts. There are lots of scripts on the
+CoScripter site, and you can't harm anything by adding more. Feel free to
+experiment. And, if you don't want to keep a script, you can delete it at
+any time.  There's a Delete button at the top of every script that you
+create if you don't want to keep it.
+</p>
+
+<div class="help-div">
+<%= image_tag "delete-button.png",
+  :alt => "Delete button on every script you create",
+  :class => "help-image" %>
+</div>
+
+<h2>Editing a script</h2>
+
+<p>
+Once you have a script loaded into the sidebar, you can edit it directly
+within the sidebar.  Click the Edit button at the top of the sidebar, and
+the sidebar will display a text box containing your script.
+</p>
+
+<p>
+When you first edit a script, CoScripter is put into record mode.  If you wish to add a new step,
+position the cursor at the right point in the script, and demonstrate what
+you want CoScripter to do.  Alternatively, you can simply edit the text to
+move steps around, create new steps, or delete unneeded steps.
+</p>
+<p>
+
+<h2>What Doesn't Work Yet</h2>
+
+<p>
+CoScripter is a work in progress, and recording might not work 100%
+correctly.  Here are some of the things we recognize are problems:
+</p>
+
+<ul><li> We don't record actions in dialog boxes and new windows.
+</li><li> We don't record actions on menu items in the web browser, including copy and paste.
+</li><li> We don't record selections or drag-and-drop.
+</li><li> We need to add pauses for DHTML and AJAX changes (some scripts run too fast, before page changes are fully loaded).
+</li></ul>
+
+<p>
+If you find other problems, please <%= link_to "let us know!",
+$profile.contact_url %>
+</p>
+</div>

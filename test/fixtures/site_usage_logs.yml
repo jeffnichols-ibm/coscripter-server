@@ -1,0 +1,11 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  accessed_at: 2007-01-26 11:13:00
+  controller: browse
+  action: about
+  uri: /
+  person_id: 1
+  coscripter_session_id: a1a
+  ip: 127.0.0.1

@@ -1,0 +1,28 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="sidebar aclpanel">
+<h3>Access control</h3>
+
+<%= javascript_include_tag :defaults %>
+<%= auto_complete_stylesheet %>
+
+<p>
+These people can access this script:
+</p>
+
+<%= h(acl.person.name) %><br/>
+<% for p in acl.members
+	if not p.nil? %>
+<span><%= h(p.name) %>&nbsp;<%= link_to_remote "[x]", :url => {:action => "acl_del",
+	:id => acl.id, :user => p.shortname } %></span><br/>
+	<% end %>
+<%end %>
+<br/>
+Add:
+<% form_remote_tag :url => { :action => "acl_add", :id => acl.id } do %>
+<label for="user" style="display: none;">Add:</label>
+<%= text_field_tag('user', nil, :size => 10) %>
+<% end %>
+<div id="user_auto_complete" class="auto_complete"></div>
+<div id="acl_status"></div>
+  <%= auto_complete_field( 'user', :url=>"../auto_complete_for_person_name", :with =>"'person[name]=' + $('user').value") %>
+</div>

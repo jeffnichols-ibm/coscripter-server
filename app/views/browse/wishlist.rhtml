@@ -1,0 +1,50 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="leftcolumn15">
+	<div class="leftcolumn_inner">
+	</div>
+</div>
+<div class="rightcolumn85">
+	<div class="rightcolumn_inner">
+
+	<% if @person.nil? %>
+	<h1>CoScripter Wishlist</h1>
+	<% else %>
+	<h1><%= h @person.name %>'s wishlist</h1>
+	<%= render :partial => "person_menu", :locals => {:person => @person} %>
+	<% end %>
+
+
+	<div class="sortheader">
+		<%= will_paginate @wishes, :inner_window => 2, :outer_windows=>1 %>
+		<br clear="both" />
+	</div>
+
+	<!-- help requests -->
+	<% for wish in @wishes %>
+	<div id="wish<%= wish.id %>" class="wish">
+	<% if @person.nil? %>
+	<%= link_to h(wish.person.name), :controller => :browse,
+	  :action => :wishlist, :id => wish.person.profile_id %>: <%= h wish.wish %>
+	<% else %>
+	<%= link_to h(wish.title), wish.url %>: <%= h(wish.wish) %>
+	<% end %>
+
+	<% if wish.person == @logged_in_user %>
+		<%= link_to_remote "(delete)",
+			:update => "wish#{wish.id}",
+			:confirm => "Really delete this wish?",
+			:url => { :controller => :browse,
+			:action => :delete_wish_remote, :id => wish.id } %>
+	<% end %>
+	<%= link_to "(more)",
+		:controller => :browse, :action => :wish, :id => wish.id %>
+	</div>
+	<% end %>
+
+	<div class="sortheader">
+	  <%= will_paginate @wishes, :inner_window => 2, :outer_windows=>1 %>
+		<!-- make the gray box extend down to enclose the paginator -->
+		<br clear="both" />
+	</div>
+</div>
+</div>

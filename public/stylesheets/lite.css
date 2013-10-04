@@ -1,0 +1,53 @@
+/* (C) Copyright IBM Corp. 2010 */
+/* This is a separate stylesheet for the lite-mode pages, including the
+ * script page that is displayed in the sidebar */
+
+body {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+/*    margin: 0px; */
+	font-size: 10pt;
+}
+
+.proclist_scrolled {
+	max-height: 150px;
+	width: 640px;
+	overflow: auto;
+	border: 1px solid;
+	background-color: #ffeddd;
+	padding: 8px;
+}
+
+.procbuttonimage img {
+    border: 0;
+}
+
+h1 {
+    font-size: 1.1em;
+    font-weight: bold;    
+    margin-top: 0px;
+}
+
+li {
+    padding-bottom: 7px;
+}
+
+a {
+    color: #0000ff;
+    text-decoration: underline;
+}
+
+/* Turn the background pink for private scripts */
+/* The margin is set here because it used to be 8px default on the body,
+ * but I explicitly set that to 0px so that the pink border would go all
+ * the way to the edge of the document area. */
+.private_script {
+    background-color: #f4d4e5;
+    margin: 0px;
+    padding: 8px;
+}
+
+.public_script {
+    background-color: #ffffff;
+    margin: 0px;
+    padding: 8px;
+}

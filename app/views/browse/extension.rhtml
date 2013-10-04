@@ -1,0 +1,142 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<script type="text/javascript">
+var coscripter_download_version = "unknown";
+</script>
+<script type="text/javascript" src="<%= $profile.version_js_url %>">
+</script>
+
+<script type="text/javascript">
+var coscripter_download_version_number = parseFloat(coscripter_download_version);
+if (isNaN(coscripter_download_version_number)) {
+  coscripter_download_version_number = 0;
+}
+
+function maybeInstallExtension() {
+  // If the user doesn't have Firefox, don't auto-install it.
+  if (typeof InstallTrigger == 'undefined') {
+    Element.show("no_firefox");
+    Element.show("download_more_info");
+    return false;
+  }
+  
+  Element.show("download_button_panel");
+  
+  // If the user already has the latest version of CoScripter installed, don't
+  // auto-install it.
+  if (coscripter_version >= coscripter_download_version_number) {
+    Element.show("have_latest_version");
+    Element.show("more_info_link");
+    return false;
+  }
+  else {
+    Element.show("auto_install");
+    return installExtension();
+  }
+}
+
+// Attempts to install the extension, and returns whether the installation
+// box was successfully displayed.
+function installExtension() {
+  var params = {
+    "CoScripter": { URL: "<%= $profile.xpi_url %>" /*
+             IconURL: aEvent.target.getAttribute("iconURL"),
+             Hash: aEvent.target.getAttribute("hash"),
+             toString: function () { return this.URL; }
+    */}
+  };
+  var result = InstallTrigger.install(params);
+  if (!result) {
+     Element.hide("auto_install");
+     Element.hide("main_download_button");
+     Element.show("more_info_link");
+     
+     // Get Firefox version number
+     if (/Firefox[\/\s](\d+\.\d+)/.test(navigator.userAgent)) {
+       var firefoxVersion = new Number(RegExp.$1);
+       if (firefoxVersion >= 3) {
+         setTimeout(function() {
+           Element.show("firefox_3_install_help");
+         }, 500);
+       }
+       else {
+         setTimeout(function() {
+           Element.show("firefox_install_help");
+         }, 500);
+       }
+     }
+  }
+  
+  return result;
+}
+
+Event.observe(window, 'load', function() {
+  if (coscripter_version > 0) {
+    document.getElementById('yourversion').innerHTML = 'You have: version ' + coscripter_version;
+  }
+  else {
+    document.getElementById('yourversion').innerHTML = "CoScripter is not installed";
+  }
+  maybeInstallExtension();
+});
+</script>
+
+<!--p style="font-size: 150%">Download CoScripter for Firefox</p-->
+
+<div class="content-area">
+  <p id="auto_install" style="display:none">CoScripter should start downloading automatically. If not, click the button below.</p>
+
+    <div id="have_latest_version" class="notice" style="display:none">
+      You already have the latest version of CoScripter.  
+    </div>
+
+  <div id="download_button_panel" style="display:none">
+    <div id="main_download_button">
+      <%= render :partial => "coscripter_dl_button" %>
+    </div>
+    
+    <div id="firefox_install_help" class="firefox_install_help_bubble" style="display:none">
+      <%= image_tag "firefox-install-help-header.png", :alt => 'To install:' %>
+      <ol>
+      <li>Click the <b>Edit Options...</b> button above</li>
+      <li>Click Allow</li>
+      <li>Click Close</li>
+      <li>Click the link below:<br>
+        <%= render :partial => "coscripter_dl_button" %>
+	<br clear="all">
+      </li>
+      <li>Click Install Now</li>
+      </ol>
+      <br clear="all">
+      <p align="right"><a href="" onclick="Element.hide('firefox_install_help'); return false">Close</a>
+    </div>
+
+    <div id="firefox_3_install_help" class="firefox_install_help_bubble" style="display:none">
+      <%= image_tag "firefox-install-help-header.png", :alt => 'To install:' %>
+      <ol>
+      <li>Click the <b>Allow</b> button above</li>
+      <li>Click the <b>Install Now</b> button</li>
+      <li>Click the <b>Restart Firefox</b> button</li>
+      </ol>
+      <br clear="all">
+      <p align="right"><a href="" onclick="Element.hide('firefox_3_install_help'); return false">Close</a>
+    </div>
+  </div>
+
+  <br clear="left" />
+
+  <div id="more_info_link" style="display:none">
+    <ul>
+    <li><%= link_to "Find out more about the CoScripter add-on for Firefox", :controller => "help", :action => "extension" %></li>
+    </ul>
+  </div>
+  
+  <div id="no_firefox" class="notice" style="display:none">
+    <p>You must use Mozilla Firefox to download and use the CoScripter add-on.</p>
+    
+    <p><a href="http://www.getfirefox.com/"><%= image_tag "fficon.gif", :border => "0", :align => "middle" %></a> <a href="http://www.getfirefox.com/">Get Firefox</a></li></p> 
+  </div>
+
+  <div id="download_more_info" style="display:none">
+    <%= render :partial => "shared/about_extension" %>
+  </div>
+</div>

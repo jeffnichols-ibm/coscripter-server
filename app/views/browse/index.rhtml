@@ -1,0 +1,36 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+This one isn't being used anymore<br>
+Most popular procedures:
+
+<table width="100%">
+
+<%
+  odd_or_even = 0
+  
+  for procedure in @most_popular
+    odd_or_even = 1 - odd_or_even
+%>
+  <tr class="ProcListLine<%= odd_or_even %>">
+    <td><a href="<%= procedure.url %>"><%=h(procedure.title)%></a></td>
+    <!-- ratings -->
+    <td>
+	<%= link_to '1', {:action => 'rate', :id => procedure, :rating => 1 },
+	    :class => '1star' %>
+	<%= link_to '2', {:action => 'rate', :id => procedure, :rating => 2 },
+	    :class => '2star' %>
+	<%= link_to '3', {:action => 'rate', :id => procedure, :rating => 3 },
+	    :class => '3star' %>
+	<%= link_to '4', {:action => 'rate', :id => procedure, :rating => 4 },
+	    :class => '4star' %>
+	<%= link_to '5', {:action => 'rate', :id => procedure, :rating => 5 },
+	    :class => '5star' %>
+    </td>
+    <td><%= procedure.times_run == 0 ? "(Never run)" :
+	"Run " + procedure.times_run.to_s() + " times" %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

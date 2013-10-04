@@ -1,0 +1,8 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<%= @sender_name %> added a comment to your script "<%= @procedure.title %>":
+
+<%= @comment.comment %>
+
+Visit your script's page to reply to this comment:
+    <%= url_for(:anchor => "comments", :only_path => false,
+	:controller => "browse", :action => "script", :id => @procedure) %>

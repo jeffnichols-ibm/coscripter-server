@@ -1,0 +1,48 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="helptext">
+<h1>Downloading and installing CoScripter</h1>
+
+<p>
+You must be running the <a href="http://www.getfirefox.com">Firefox web
+browser</a> to use the CoScripter sidebar.  It does not work with Internet
+Explorer.
+</p>
+
+<p>
+You can install the sidebar by clicking on the <%= link_to "download",
+  :controller => :browse, :action => :extension %> link in the header at
+the top of the page.
+</p>
+
+<p>
+When you go to that page, a bar will show up at the top of your browser
+window:
+</p>
+
+<div class="help-div">
+<%= image_tag "prevent-install.png",
+  :alt => "Allow this website to install software", :class => "help-image" %>
+</div>
+
+<p>
+You need to give the CoScripter website permission to install software on
+your computer.  Click on "Edit Options" in that bar to bring up the
+"Allowed Sites" dialog:
+</p>
+
+<div class="help-div">
+<%= image_tag "allowed-sites.png", :class => "help-image" %>
+</div>
+
+<p>
+Click "Allow" in that window, then "Close".  Finish by clicking on the
+download link in that web page to really download the extension and install
+it.
+</p>
+
+<p>
+Once you have installed the extension, you will have a Tools-&gt;CoScripter
+item in your Firefox menu which brings up the CoScripter extension.
+CoScripter also places an icon in the bottom-right part of the status bar of your
+Firefox window.  Clicking on the icon toggles the sidebar open and closed.
+</div>

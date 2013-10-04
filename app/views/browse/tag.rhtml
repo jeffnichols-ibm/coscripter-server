@@ -1,0 +1,17 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="leftcolumn15"><div class="leftcolumn_inner">
+<div id="tagcloud_panel">
+  <%= render :partial => "tagcloud", :object => @tagcloud %>
+</div>
+</div></div>
+<div class="rightcolumn85"><div class="rightcolumn_inner">
+
+<% if @procedures.length == 0 %>
+<h1>No scripts tagged with "<%= h @tag %>"</h1>
+<% else %>
+<h1>Scripts tagged with "<%= h @tag %>"</h1>
+
+<%= render :partial => 'procview', :locals => { :hidebuttons => false } %>
+<% end %>
+
+</div></div>

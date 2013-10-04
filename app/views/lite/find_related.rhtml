@@ -1,0 +1,38 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "Related scripts" %>
+
+<!-- for coscripter extension detection -->
+<script type="text/javascript">
+var coscripter_version = 0;
+</script>
+<%= javascript_include_tag "chrome://coscripter/content/coscripter_version.js" %>
+
+<p>
+<% if @related.length == 0 %>
+There are no scripts related to <b><%= h(@title) %></b>.
+<% else %>
+
+Scripts related to <b><%= h @title %></b>:
+
+<div class="proclist_scrolled">
+<% for script in @related %>
+<div>
+<% @procedure = script %>
+<%= render :partial => "browse/loadbutton", :locals => { :use_icons => true, :procedure => @procedure} %>
+
+<% scripturl = url_for(:controller => :browse, :action => :script,
+  :id => script.id, :only_path => false) %>
+<%= h script.title %>
+</div>
+<% end %>
+</div>
+<% end %>
+</p>
+
+<%= render :partial => "wishscripts", :object => @requests %>
+
+<hr>
+Don't see what you want?  Let the CoScripter community know what you want
+to do, and perhaps someone will create a script to help you out!
+
+<%= render :partial => "makewish" %>

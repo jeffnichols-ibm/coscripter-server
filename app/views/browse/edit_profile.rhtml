@@ -1,0 +1,46 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "Editing CoScripter profile" %>
+
+<div class="content-area">
+
+<% if @person %>
+
+    <h2>Editing profile for <%= h(@person.name)%></h2>
+
+<div class="edit_instructions">
+   <div class="edit_instructions_inner">
+      <p>You can use
+      <a href="http://hobix.com/textile/quick.html" target="_blank">textile</a> markup to
+      format your text.
+      </p>
+   </div>
+</div>
+
+<% form_for :person,
+   :url => {:action => "update_profile", :id => @person.shortname} do |form| %>
+
+		<label for="person_description">Describe yourself:</label>
+		<%= form.text_area :description, {:cols => 50, :rows => 10} %>
+		<br><br>
+
+		<label for="person_home_page_url">My home page address:</label><br>
+		<%= form.text_field :home_page_url, :size => 50 %>
+		<br><br>
+
+   <%
+   # <!-- p>My home page name: <br>
+   # <%= form.text_field :home_page_name, :size => 50 % >
+   # </p -->
+   %>
+   
+  <%= submit_tag 'Save changes' %>
+  <%= link_to 'Cancel', :action => 'profile', :id => @person.shortname %>
+
+
+<% end %>
+
+<% else %>
+<p>You do not have permission to edit this profile.</p>
+<% end %>
+
+</div>

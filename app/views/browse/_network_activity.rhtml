@@ -1,0 +1,38 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if network_activity.length > 0 %>
+
+<table class="network_activity">
+<% prev_date = Date.new(1900, 1, 1)%>
+<% for activity in network_activity %>
+  <% if activity.date.to_date == prev_date or prev_date == Date.new(1900, 1, 1) %>
+  <tr>
+  <% else %>
+  <tr class="new_date">
+  <% end %>
+  	<td class="date">
+  	  <% if activity.date.to_date != prev_date %>
+        <small><%= (activity.date.to_date == Date.today()) ? "TODAY" : activity.date.to_date.to_s(:short).upcase %></small>
+		<% prev_date = activity.date.to_date %>
+	  <% end %>
+    </td>
+	<td> 
+  <%= link_to h(activity.person.name), {:action => :person, :id=>activity.person.email, :source => "sna"} %>
+    </td>
+	<td class="script_name">
+  <% if  activity.procedure.nil? %>
+    a private script
+  <% else %>
+    <span class="proc_title"><%= link_to h(activity.procedure.title), {:action => :script, :id=> activity.procedure.id, :source => "sna"} %>
+    </span>
+	<% if activity.reps.to_i > 1 %>
+	  <span style="font-size:xx-small;">(&times;<%= "#{activity.reps}"%>)</span>
+    <%end%>
+  <%end%>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<% else %>
+
+<% end %>

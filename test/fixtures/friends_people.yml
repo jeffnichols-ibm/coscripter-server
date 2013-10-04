@@ -1,0 +1,11 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+jimmy_is_tessas_friend:
+  person_id: 1
+  friend_id: 2
+tessa_is_jimmys_friend:
+  person_id: 2
+  friend_id: 1
+allen_is_tessas_friend:
+  person_id: 1
+  friend_id: 5

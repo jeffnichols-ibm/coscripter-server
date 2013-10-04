@@ -1,0 +1,11 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<!--[form:procedure]-->
+<p><label for="procedure_title">Title</label><br/>
+<%= text_field 'procedure', 'title', { :style => "width: 100%" } %><br/>
+<%= check_box 'procedure', 'private' %> Private
+</p>
+
+<p><label for="procedure_body">Steps</label><br/>
+<%= text_area 'procedure', 'body', { :style => "width: 100%" } %></p>
+<!--[eoform:procedure]-->
+

@@ -1,0 +1,31 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = 'New terms and conditions' %>
+<div class="content-area">
+<%= error_messages_for 'user' %>
+
+<h1>Terms and conditions have changed</h1>
+
+<p>
+Welcome back!  We have updated our site and changed the terms of service
+and licensing agreements.  Please read the revised documents below and
+check the box indicating that you agree to them before continuing on to
+CoScripter.
+</p>
+
+<% form_tag do %>
+
+<input type="hidden" name="redirect" value="<%= @redirect %>">
+
+<%= render :partial => "shared/#{$profile.profilename}/tos" %>
+<br/>
+<%= render :partial => "shared/#{$profile.profilename}/license" %>
+
+<p>
+By clicking on the button below, you agree to the updated terms of service
+and licensing agreements above.
+</p>
+<p><input type="submit" id="terms_accepted"
+  value="I agree, take me to CoScripter"/></p>
+
+<% end %>
+</div>

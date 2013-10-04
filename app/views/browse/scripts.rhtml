@@ -1,0 +1,50 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter: All scripts" %>
+<% @page_feed_options = {:controller => 'atom', :action => 'scripts',
+  :sort => @sortorder} %>
+
+<div class="leftcolumn15">
+	<div class="leftcolumn_inner">
+		<div id="tagcloud_panel">
+			<a class="skiplink" href="#afterCloud">Skip past tagcloud</a>
+			<%= render :partial => "tagcloud" , :object => @tagcloud%>
+			<a name="afterCloud"></a>
+		</div>
+	</div>
+</div>
+<div class="rightcolumn85">
+	<div class="rightcolumn_inner">
+		<h1>
+			<span class="atombutton">
+			    <%= link_to(image_tag("feed-icon-16x16.png"),
+				:controller => 'atom', :action => 'scripts', :sort => @sortorder) %>
+			</span>
+			All scripts</h1>
+		
+		<div class="sortheader">
+		  <%= procedures_info @procedures %><br/>
+			<%= render :partial => "paginator", :locals => {:items => @procedures} %>
+			
+			Sorted by
+			<%= link_to_unless(@sortorder == "popularity", "popularity", {:sort => "popularity"}) %>
+			|
+			<%= link_to_unless(@sortorder == "usage", "recent use", {:sort => "usage"}) %>
+			|
+			<%= link_to_unless(@sortorder == "favorite", "favorite", {:sort => "favorite"}) %>
+			|
+			<%= link_to_unless(@sortorder == "modified", "modification date", {:sort => "modified"}) %>
+			|
+			<%= link_to_unless(@sortorder == "creator", "creator", {:sort => "creator"}) %>
+			|
+			<%= link_to_unless(@sortorder == "created", "creation date", {:sort => "created"}) %>
+		</div>
+		
+		<%= render :partial => 'procview', :locals => { :hidebuttons => false } %>
+		
+		<div class="sortheader">
+			<%= render :partial => "paginator", :locals => {:items => @procedures} %>
+			<!-- make the gray box extend down to enclose the paginator -->
+			<br clear="both" />
+		</div>
+	</div>
+</div>

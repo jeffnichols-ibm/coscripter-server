@@ -1,0 +1,15 @@
+<html>
+<!-- (C) Copyright IBM Corp. 2010 -->
+<head>
+  <title>Admin: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <link rel="icon" href="<%= image_path("coscripter-favicon.gif") %>" >
+</head>
+<body>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= @content_for_layout %>
+
+</body>
+</html>

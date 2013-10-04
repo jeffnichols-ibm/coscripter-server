@@ -1,0 +1,15 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<table width="100%" border="0"><% for line in scriptdiff %><%
+if line[1] == " "
+	style = ""
+	marker = ""
+elsif line[1] == "-"
+	style = "background-color: #f9f89e; width: 100%;"
+	marker = "&lt;&nbsp;"
+elsif line[1] == "+"
+	style = "background-color: #9ef9ba; width: 100%;"
+	marker = "&gt;&nbsp;"
+end
+%><tr style="<%= style %>"><td width="20px"><b><%= marker %></b></td>
+<td><%= format_markdown(line[0]) %></td></tr>
+<% end %>

@@ -1,0 +1,28 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+
+Send this script to your friends via email.
+<br/>
+<br/>
+
+<% form_tag do %>
+<table>
+<tr>
+    <td>From:</td>
+    <td><%= h "#{@me.name} <#{@me.email}>" %></td>
+</tr>
+<tr>
+    <td><label for="recipient_email">To:</label></td>
+    <td><%= text_field_tag('recipient_email', nil, :size => 60) %></td>
+</tr>
+<tr>
+    <td><label for="subject">Subject:</label></td>
+    <td><%= text_field_tag('subject', @subject, :size => 60) %></td>
+</tr>
+</table>
+
+<label for="body" style="display: none;">Type your message here</label>
+<%= text_area_tag 'body', @body, :size => "80x25" %>
+<br/>
+<%= submit_tag 'Send' %>
+<%= link_to 'Cancel', :action => 'procedure', :id => @procedure %>
+<% end %>

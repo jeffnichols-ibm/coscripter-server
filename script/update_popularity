@@ -1,0 +1,18 @@
+# This script updates the popularity measure of a script 
+# This is rather quick, and could be done every hour. 
+# right now the popularity is just the number of times a 
+# script had been executed in the last 24 hours. 
+
+# This script will be called by a cronjob like this:
+ 
+# 59 * * * *   /home/koala/current/script/runner /home/koala/current/script/update_popularity
+
+sql = ActiveRecord::Base.connection();
+sql.execute "SET autocommit=0";
+sql.begin_db_transaction
+sql.update "update procedures set popularity = 0"
+sql.update "update procedures set popularity = (select count(procedure_executes.id) from procedure_executes where procedure_executes.procedure_id = procedures.id and procedure_executes.executed_at > TIMESTAMPADD(DAY,-(select days from popularity_recencies limit 1),NOW()));"
+# Bad: timestampadd is mysql specifig ... should fix this ... CD 1/12/2009
+# sql.update "update procedures set popularity = popularity + (select count(procedure_views.id) from procedure_views where procedure_views.procedure_id = procedures.id and procedure_views.viewed_at > TIMESTAMPADD(DAY,-1,NOW()));"
+# thought using procedure_views may be good, but is not updated since 2007 
+sql.commit_db_transaction

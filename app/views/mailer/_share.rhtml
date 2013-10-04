@@ -1,0 +1,9 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<%= @sender_name %> thinks you would be interested in this script:
+
+    <%= @procedure.title %>
+    <%= @procurl %>
+
+Visit the CoScripter website to browse everyone's scripts, create your own, and
+share them with your colleagues:
+    <%= url_for :controller => 'browse', :only_path => false %>

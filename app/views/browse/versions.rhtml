@@ -1,0 +1,19 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScript history: #{@procedure.title}" %>
+<h1>Changes to "<%= h @procedure.title %>"</h1>
+
+<ul>
+<% for change in @sorted_changes %>
+<% title = change.title.nil? ? "Modified at" : "\"#{change.title}\" at" %>
+<li><%= "#{h title} #{change.modified_at} by
+  #{change.person.nil? ? '???' : change.person.name}" %>
+<%= link_to_remote "show", { :update =>
+  "change_#{@procedure.id}_#{change.id}",
+  :url => { :action => "version", :id => change.id } } %>
+<%= link_to_remote "diff from previous", { :update => "change_#{@procedure.id}_#{change.id}",
+	:url => {:action => "diff", :id => change.id}} %>
+<%= link_to "revert", { :action => 'revert', :id => change } %>
+<div id="<%= "change_#{@procedure.id}_#{change.id}" %>" class="changelog">
+</div>
+<% end %>
+</ul>

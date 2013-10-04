@@ -1,0 +1,14 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if @related && @related.length > 0 %>
+<div class="sidebar relatedpanel" id="related_scripts">
+
+<div><h3 class="tagcloudbox">Related scripts</h3></div><br>
+<ul>
+<% for script in @related %>
+    <li><%= link_to h(script.title), :action => "script", :id => script.id %>
+    </li>
+<% end %>
+</ul>
+
+</div>
+<% end %>

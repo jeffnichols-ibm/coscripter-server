@@ -1,0 +1,23 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+
+<table width="100%">
+
+<%
+  odd_or_even = 0
+
+  for person in @people
+    odd_or_even = 1 - odd_or_even
+%>
+  <tr class="ProcListLine<%= odd_or_even %>">
+    <td><%= h(person.name) %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<div class="tablesummary">
+Total: <%= pluralize(@people.length, " person", " people") %>
+</div>
+
+<br />
+

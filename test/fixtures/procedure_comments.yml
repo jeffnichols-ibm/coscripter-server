@@ -1,0 +1,94 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+#first:
+#  id: 1
+#another:
+#  id: 2
+
+comment_1:
+  id: 1
+  procedure_id: 15
+  person_id: 2
+  comment: comment number one
+  created_at: 2007-08-09 11:23:00
+  updated_at: 2007-08-09 11:23:00
+
+comment_2:
+  id: 2
+  procedure_id: 15
+  person_id: 999
+  comment: comment from deleted person
+  created_at: 2007-08-09 11:23:00
+  updated_at: 2007-08-09 11:23:00
+
+comment_on_jimmys_script:
+  id: 3
+  procedure_id: 18
+  person_id: 1
+  comment: "hi jimmy, this is a comment on your script"
+  created_at: 2008-06-10 15:52:00
+  updated_at: 2008-06-10 15:52:00
+
+followup_to_my_comment:
+  id: 4
+  procedure_id: 18
+  person_id: 2
+  comment: "followup to tessa's comment"
+  created_at: 2008-06-10 15:53:00
+  updated_at: 2008-06-10 15:53:00
+
+followup_by_tessa:
+  id: 5
+  procedure_id: 18
+  person_id: 1
+  comment: "followup to jimmy's comment"
+  created_at: 2008-06-10 17:53:00
+  updated_at: 2008-06-10 17:53:00
+
+followup_again_by_tessa:
+  id: 6
+  procedure_id: 18
+  person_id: 1
+  comment: "another followup to jimmy's comment"
+  created_at: 2008-12-09 17:47:00
+  updated_at: 2008-12-09 17:47:00
+
+comment_on_tessas_script:
+  id: 7
+  procedure_id: 26
+  person_id: 2
+  comment: "hi tessa, this is a comment on your script"
+  created_at: 2008-12-10 15:52:00
+  updated_at: 2008-12-10 15:52:00
+
+followup_to_jimmys_comment:
+  id: 8
+  procedure_id: 26
+  person_id: 1
+  comment: "followup to jimmy's comment"
+  created_at: 2008-12-10 15:53:00
+  updated_at: 2008-12-10 15:53:00
+
+followup_by_jimmy_again:
+  id: 9
+  procedure_id: 26
+  person_id: 2
+  comment: "followup to tessa's comment"
+  created_at: 2008-12-10 17:53:00
+  updated_at: 2008-12-10 17:53:00
+
+followup_by_allen:
+  id: 10
+  procedure_id: 26
+  person_id: 5
+  comment: "this is allen's comment"
+  created_at: 2008-12-11 17:47:00
+  updated_at: 2008-12-11 17:47:00
+
+comment_on_allen_script:
+  id: 11
+  procedure_id: 30
+  person_id: 2
+  comment: "jimmy test comment"
+  created_at: 2009-03-20 09:47:00
+  updated_at: 2009-03-20 09:47:00

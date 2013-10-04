@@ -1,0 +1,40 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = 'Register' %>
+<div class="content-area">
+<%= error_messages_for 'user' %>
+
+<h1>Register for CoScripter</h1>
+
+<p>
+Before we take you to the site, we need you to choose your display name,
+and read the terms of service and licensing agreements below.
+</p>
+
+<p>Please choose a display name to identify yourself to other users on the
+CoScripter website.</p>
+
+<% form_tag do %>
+
+<input type="hidden" name="redirect" value="<%= @redirect %>">
+
+<p>Display name: <%= text_field('user', 'displayname', :value=>@displayname) %> <span id="displayname_errors"></span></p>
+<p>
+<em>Your display name must be unique and may only contain the letters a-z, numbers, and these special characters:
+<br>
+@ . - _ space</em>
+<%= observe_field "user_displayname", :frequency => 0.5, :url => {:action => :userexists} , :with => "'name=' + encodeURIComponent(value)" %>
+</p>
+
+<%= render :partial => "shared/#{$profile.profilename}/tos" %>
+<br/>
+<%= render :partial => "shared/#{$profile.profilename}/license" %>
+
+<p>
+By clicking on the button below, you agree to the terms of service and
+licensing agreements above.
+</p>
+<p><input type="submit" id="terms_accepted"
+  value="I agree, take me to CoScripter"/></p>
+
+<% end %>
+</div>

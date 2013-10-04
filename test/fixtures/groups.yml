@@ -1,0 +1,12 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  name: MyString
+  group_type_id: 1
+  separation: 1
+two:
+  id: 2
+  name: MyString
+  group_type_id: 1
+  separation: 1

@@ -1,0 +1,48 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if @person.nil? %><h1>Person does not exist</h1><% else %>
+
+<% if not @network_activity.nil? %>
+<script>
+  var currentTab = "executed" ;
+
+  function tabSelect(tabname){
+	$(currentTab + '_div').removeClassName('tab-selected');
+	$(currentTab + '_div').addClassName('tab');
+
+	$(currentTab + '_tab').removeClassName('tabheader-selected');
+	$(currentTab + '_tab').addClassName('tabheader');
+
+	$(tabname + '_div').addClassName('tab-selected');
+	$(tabname + '_div').removeClassName('tab');
+
+	$(tabname + '_tab').addClassName('tabheader-selected');
+	$(tabname + '_tab').removeClassName('tabheader');
+
+	currentTab = tabname;
+  }
+</script>
+<div class="homebox">
+  <h1>Script activity in <%= h(@person.name) %>'s social network:</h1>
+  <div>
+	<span class="tabheader-selected" id="executed_tab"><a href="javascript:tabSelect('executed')">Executed</a></span><span class="tabheader" id="modified_tab"><a  href="javascript:tabSelect('modified')">Modified</a></span><span class="tabheader" id="created_tab"><a  href="javascript:tabSelect('created')">Created</a></span>
+  </div>
+  <div class="tab-selected" id="executed_div">
+	<%= render :partial => 'network_activity', :object => @network_activity[:executed] %>
+  </div>
+  <div class="tab" id="modified_div">
+	<%= render :partial => 'network_activity', :object => @network_activity[:modified] %>
+  </div>
+  <div class="tab" id="created_div">
+	<%= render :partial => 'network_activity', :object => @network_activity[:created] %>
+  </div>
+</div>
+<% end %>
+
+<div class="homebox">
+    <h1>Popular scripts in <%= h(@person.name)%>'s organization:</h1>
+  <div id="organization_scripts" class="tab-selected" style="display:block">
+	<%= render :partial => 'org_scripts', :object => @org_scripts %>
+  </div>
+</div>
+
+<% end %>

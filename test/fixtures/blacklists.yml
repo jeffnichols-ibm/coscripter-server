@@ -1,0 +1,8 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ip_address: "127.0.1.2"
+
+two:
+  ip_address: "127.0.1.3"

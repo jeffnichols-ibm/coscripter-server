@@ -1,0 +1,61 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<table width="100%">
+<%
+	for @space in @scratch_spaces
+%>
+		<tr class="ProcListLine<%= @space.private ? "_Private" : "" %>">
+
+			<td width="10px">
+				<% if @space.private %>
+					<%= image_tag "lock.png", :size => "10x10", :alt => "Private" %>
+				<% end %>
+			</td>
+	
+			<td>
+				<div class="proctitle">
+					<%= link_to h(@space.title), {:action => 'scratch_space',
+					:id => @space } %>
+				</div>
+	
+				<div class="snippet">
+					<%= h @space.description %>
+				</div>
+	
+				<span class="procinfo">
+					<% if @space.person.nil? %>
+						Anonymous
+					<% else %>
+						<%= link_to h(@space.person.name), {:action => 'person',
+						:id => @space.person.shortname} %>
+					<% end %>
+					
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					
+					<%= h @space.updated_at.to_date.to_s(:long) %>
+					
+					<% if false %>
+					&nbsp;&nbsp;|&nbsp;&nbsp;
+					
+					<% if @space.tags.length > 0 %>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						<% @space.clean_tags.each do |clean_tag| %>
+							<%= link_to clean_tag, :controller => "browse",
+							:action => "tag", :id => clean_tag %>
+						<% end %>
+					<% end %>
+					<% end %>
+				</span>
+			</td>
+	
+			<% if false %>
+			<td width="80px" valign="top">
+				<%= render :partial => "favorites" %>
+				<div class="procinfo">
+					used
+					<%= pluralize(@space.procedure_executes.length, " time", " times") %>
+				</div>
+			</td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>

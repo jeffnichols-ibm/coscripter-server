@@ -1,0 +1,24 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div>
+Please log in with your <%= $profile.id_name %> and password.
+</div>
+
+<% form_tag do %>
+<input type="hidden" name="redirect" value="<%= @redirect %>">
+<table>
+    <tr>
+	<td>ID:</td>
+	<td><%= text_field('user', 'w3login', {:size => 25}) %></td>
+    </tr>
+    <tr>
+	<td>Password:</td>
+	<td><%= password_field('user', 'w3pass', {:size => 25}) %></td>
+    </tr>
+    <tr>
+	<td></td>
+	<td><input type="submit" value="Login"/></td>
+    </tr>
+</table>
+<% end %>
+
+<%= render :partial => "shared/#{$profile.profilename}/login_instructions" %>

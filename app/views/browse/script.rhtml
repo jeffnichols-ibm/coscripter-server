@@ -1,0 +1,215 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter: " + h(@procedure.title) %>
+
+<%= render :partial => "autorunnotice" %>
+
+<br clear="both"/>
+
+<div class="leftcolumn20"><div class="leftcolumn_inner_small">
+	<a class="skiplink" href="#afterAddTag">Skip past tagging widget</a>
+    <div class="sidebar addtagpanel">
+        <!-- div class="hr"></div -->
+        <div id="mytags_panel">
+            <%= render :partial => "mytags", :object => @procedure.tags %>
+        </div>
+    </div>
+	<a name="afterAddTag"></a>
+
+	<a class="skiplink" href="#afterCloud">Skip past tag cloud</a>
+    <div id="tagcloud_panel">
+        <%= render :partial => "tagcloud",
+	  :locals => { :useNumPersonHeader => true } ,
+	  :object => @tagcloud
+        %>
+    </div>
+	<a name="afterCloud"></a>
+
+	<a class="skiplink" href="#afterRelated">Skip past related scripts</a>
+    <%= render :partial => "related" %>
+	<a name="afterRelated"></a>
+
+    <%
+    #TODO We need to throw these guys in somewhere:    
+    # < % = render :partial => "contributors" % >
+    %> 
+    
+</div></div>
+
+<div class="rightcolumn80"><div class="rightcolumn_inner_small hcoscript">
+    <% if @procedure.private %>
+    <div id="proc_header" class="proc_header_private">
+    <% else %>
+    <div id="proc_header" class="proc_header">
+    <% end %>
+    <span class="scriptid" style="display: none;"><%=@procedure.id%></span>
+    <span id="showbestbet" style="float:right">
+        <%= render :partial => "showbestbet" , :object=>@procedure.best_bet %>
+    </span>
+        
+        <h1 class="scripttitle"><%= h @procedure.title %></h1>
+        
+        <table class="proc_header_metadata">
+        <tr>
+          <td>
+            <table>
+            <tr>
+              <td><%= render(:partial => 'shared/photo', :locals => {:person => @creator, :width => 40, :height => 40}) %></td>
+              <td>
+                Created by<br />
+                <b><%= @creator.nil? ? "Anonymous" : link_to(h(@creator.name), {:action => 'person', :id => @creator.shortname}) %></b><br />
+              </td>
+            </tr>
+            </table>
+          </td>
+          <td>
+            <b>Created: </b><%= @procedure.created_at.to_date.to_s(:long) %><br />
+            <% if not @last_edit.nil? %>
+                <b>
+                <%= link_to "Last modified:", :action => 'versions', :id => @procedure %>
+                </b><%= @last_edit.modified_at.to_date.to_s(:long) %><br />by
+                <% if @last_edit.person.nil? %>
+                Anonymous
+                <% else %>
+                <%= link_to h(@last_edit.person.name), {:action => 'person', :id => @last_edit.person.shortname} %>
+                <% end %>
+                <br />
+            <% end %>
+          </td>
+          <td>
+	    <b>Run: </b>
+	      <%= pluralize(@procedure.usagecount, " time", " times") %><br />
+            <% if @procedure.usagecount > 0 %>
+              <% span = @procedure.most_recent_execution -
+                @procedure.first_execution%>
+		by 
+		<span title="<%= @procedure.executors%>">
+		  <%= link_to h(pluralize(@procedure.distinct_runs, " person", " people")), :controller=> :browse, :action=> :people, :id=>@procedure.id  %>
+		</span>
+            <% if @procedure.usagecount > 1 %>
+              <br/>
+              over <%= formatSeconds(span) %>
+            <% end %>
+            <% end %>
+          </td>
+
+          <%= render :partial => "private",
+            :locals => 
+              {:item => @procedure, :action_method => 'mark_private'} %>
+
+          <td id="favorite">
+            <%= render :partial => "star", :locals => { :me => @me,
+				:procedure => @procedure, :is_favorite => @is_favorite } %>
+          </td>
+        </tr>
+        </table>
+    </div>
+    
+    <!-- run button -->
+    <div class="proc_actionbar">
+      <%= render :partial => "loadbutton", :locals => {:procedure => @procedure }%>
+      <%= render :partial => "runbutton", :locals => {:procedure => @procedure } %>
+    
+      <!-- other buttons -->
+      <span>
+      <%= link_to "Edit", { :action => "edit", :id => @procedure },
+      { :class => "procbutton" } %>
+      </span>
+
+      <span>
+        <%= link_to "Duplicate", { :action => :copy, :id => @procedure },
+    	{ :class => 'procbutton'} %>
+      </span>
+    
+      <!-- span>
+        <%= link_to "Send", { :action => :share, :id => @procedure },
+    	{ :class => 'procbutton'} %>
+      </span -->
+    
+      <!-- only display delete button if I created it -->
+      <% if (not @creator.nil? and @creator == @me) or (not @me.nil? and
+    	not @me.administrator.nil?) %>
+          <span>
+    	<% if @creator == @me
+    		deltext = "Delete"
+	    else
+		    deltext = "Delete (admin)"
+	    end %>
+	  <%= link_to deltext, { :action => :delete, :id => @procedure },
+	    { :class => 'procbutton', :confirm => 'Delete this script?',
+              :method => :post } %>
+      </span>
+    <% end %>
+      
+    </div>
+        
+    <!-- procedure body -->
+    <br/>
+    <div id="procedure-body" class="scriptbody">
+        <%= format_markdown(@procedure.body.nil? ? '' : @procedure.body) %>
+    </div>
+
+    <!-- comments -->
+    <div class="comments_header">
+        <% if @me.nil? %>
+           <%= render :partial => "loginlink", :locals => {:login_text => "Log in"} %> to add comments
+        <% else %>
+           <%= link_to_function "Comment on this script", "Element.show('procedure-comment-add')" %>
+        <% end %>&nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to "E-mail this script to others...", { :action => :share, :id => @procedure } %>
+        <% if @procedure.changes.length > 0 %>
+        &nbsp;&nbsp;|&nbsp;&nbsp; <%= link_to "Show previous versions",
+          { :action => :versions, :id => @procedure } %>
+        <% end %>
+    </div>
+
+    <div id="procedure-comment-add" style="display:none">
+    <% if @me.nil? %>
+    <% else %>
+        <p>
+        <% form_tag({:action => 'add_comment', :id => @procedure}, {:name => "add_comment"}) do %>
+        <%= text_area_tag 'comment', nil, :size => "80x5" %>
+        <br/>
+        <%= submit_tag "Add" %>
+        <%= button_to_function "Cancel", "document.add_comment.reset(); Element.hide('procedure-comment-add')" %>
+        <%= %>
+        <% end %>
+        </p>
+    <% end %>
+    </div>
+
+    <a name="comments"></a>
+    <div id="procedure-comments" class="commentlist">
+    <%= render :partial => "comment", :collection=>@procedure.procedure_comments.sort { |x, y| y.updated_at <=> x.updated_at } %>
+    </div>
+
+
+</div></div>
+
+<!-- sharing column -->
+<div class="rightcolumn20"><div class="rightcolumn_inner_small">
+<% if @procedure.private %>
+	<div id="acl_box">
+	<%= render :partial => "acl", :object => @procedure %>
+	</div>
+<% else %>
+<div class="sidebar addtagpanel">
+
+<h3>Sharing</h3>
+	<% if not @me.nil? %>
+		<% 
+			thisurl = url_for(:action => "script", :controller => "browse", :id => @procedure.id,
+				:only_path => false)
+		%>
+
+		<div>
+		<%= image_tag "email_icon.gif", :class => "share_icon" %><%= link_to "Email this",
+			:action => "share", :id => @procedure.id %>
+		</div>
+		<br/>
+	<% else %>
+		<%= render :partial => "loginlink", :locals => {:login_text => "Log in"} %>
+	<% end %>
+
+</div>
+<% end %>
+</div></div>
+

@@ -1,0 +1,16 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<%
+    contributors = [@procedure.person]
+    contributors += @procedure.changes.map {|ch| ch.person}
+    contributors = contributors.sort! {|x, y| x.name <=> y.name }
+    contributors = contributors.uniq!
+%>
+
+<% if not contributors.nil? %>
+    <h1>Related people</h1>
+    <% for c in contributors %>
+	<%= link_to c.name, :action => 'person', :controller => 'browse',
+	    :id => c.shortname %>
+	<br/>
+    <% end %>
+<% end %>

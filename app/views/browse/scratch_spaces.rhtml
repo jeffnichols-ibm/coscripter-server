@@ -1,0 +1,92 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if @person.nil?
+	@page_title = "CoScripter: All scratch spaces"
+else
+	@page_title = h(@person.name) + "'s scratch spaces"
+end %>
+
+<% @page_feed_options = {:controller => 'atom', :action => 'scripts',
+  :sort => @sortorder} %>
+
+<div class="leftcolumn15">
+	<div class="leftcolumn_inner">
+		<div id="tagcloud_panel">
+			<% if false %>
+			  <%= render :partial => "tagcloud",:object=>@tagcloud %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="rightcolumn85">
+	<div class="rightcolumn_inner">
+		<h1>
+			<span class="atombutton">
+			    <%= link_to(image_tag("feed-icon-16x16.png"),
+				:controller => 'atom', :action => 'scripts', :sort => @sortorder) %>
+			</span>
+			<% if @person.nil? %>
+				All scratch spaces
+			<% else %>
+				<%= h(@person.name) %>'s scratch spaces
+			<% end %>
+		</h1>
+
+		<% if @scratch_spaces.length == 0 %>
+			<p>
+				<% if @person.nil? %>
+					There are no scratch spaces.
+				<% elsif session[:user_id] and session[:user_id] == @person.id %>
+					You have no scratch spaces.
+				<% else %>
+					This user has no scratch spaces.
+				<% end %>
+			</p>
+		<% end %>
+		
+			<div class="sortheader">
+				<%= render :partial => "paginator", :locals => {:items => @scratch_spaces} %>
+				
+				Sorted by
+				<%= link_to_unless(@sortorder == "usage", "usage", {:sort => "usage"}) %>
+				|
+				<%= link_to_unless(@sortorder == "favorite", "favorite", {:sort => "favorite"}) %>
+				|
+				<%= link_to_unless(@sortorder == "modified", "modification date", {:sort => "modified"}) %>
+				|
+				<%= link_to_unless(@sortorder == "creator", "creator", {:sort => "creator"}) %>
+			</div>
+			
+			<%= render :partial => 'space_list_view', :locals => { :hidebuttons => false } %>
+			
+			<div class="sortheader">
+				<%= render :partial => "paginator", :locals => {:items => @scratch_spaces} %>
+				<!-- make the gray box extend down to enclose the paginator -->
+				<br clear="both" />
+			</div>
+		
+		<% if session[:user_id] %>
+			<p><%= button_to_function "Create a scratch space", "Element.show('create_scratch_space_form'); Element.hide('show_create_scratch_space_form')", :id => "show_create_scratch_space_form" %></p>
+			
+			<div id="create_scratch_space_form" style="display:none">
+				<h4>Create a scratch space</h4>
+				<% form_for :scratch_space, :url => { :action => :create_scratch_space_with_initial_table } do |form| %>
+					<table>
+						<tr>
+							<td>Title:</td>
+							<td><%= form.text_field :title, :size => 30 %></td>
+						</tr>
+						<tr valign="top">
+							<td>Description:</td>
+							<td><%= form.text_area :description, :rows => 3 %></td>
+						</tr>
+					</table>
+					<br>
+					<%= form.hidden_field :person_id, :value => session[:user_id] %>
+					<%= form.hidden_field :private, :value => :true %>
+					<%= submit_tag "Create" %>
+					<%= button_to_function "Cancel", "Element.hide('create_scratch_space_form'); Element.show('show_create_scratch_space_form')" %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+</div>

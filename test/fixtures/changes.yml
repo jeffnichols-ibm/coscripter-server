@@ -1,0 +1,72 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+private1:
+  id: 1
+  procedure_id: 7
+  body: original version of private script
+  title: A private procedure
+  modified_at: 2007-02-28 14:20:00
+  person_id: 1
+private2:
+  id: 2
+  procedure_id: 7
+  body: second version of private script
+  title: A private procedure
+  modified_at: 2007-02-28 14:21:00
+  person_id: 1
+change1:
+  id: 3
+  procedure_id: 1
+  body: original version of public script
+  title: First Procedure
+  modified_at: 2007-02-28 14:22:00
+  person_id: 1
+
+change_by_null:
+  id: 4
+  procedure_id: 9
+  body: new version
+  title: new title
+  modified_at: 2007-05-25 11:23:00
+  # this person_id should not exist
+  person_id: 100000
+
+change_seq1:
+  id: 5
+  procedure_id: 22
+  body: "line1\nline2\nline3\nline4"
+  title: Changed script
+  modified_at: 2008-12-04 14:22:00
+  person_id: 1
+
+change_seq2:
+  id: 6
+  procedure_id: 22
+  body: "line1\nline3\nline4\nline5"
+  title: Changed script
+  modified_at: 2008-12-04 15:22:00
+  person_id: 1
+
+change_for_email_updates:
+  id: 7
+  procedure_id: 23
+  title: original version
+  body: "original body"
+  person_id: 1
+  modified_at: 2008-12-08 11:04:00
+
+change_for_email_updates2:
+  id: 8
+  procedure_id: 23
+  title: new version
+  body: "new body"
+  person_id: 5
+  modified_at: 2008-12-08 11:04:00
+
+change_for_email_updates3:
+  id: 9
+  procedure_id: 23
+  title: new version 2
+  body: "new body 2"
+  person_id: 5
+  modified_at: 2008-12-08 11:05:00

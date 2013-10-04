@@ -1,0 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<!-- (C) Copyright IBM Corp. 2010 -->
+<html>
+<body>
+  <h1>Too many requests</h1>
+		  <p>The ip address your request appears to come from - <%=@ip%> - is blocked. This may be because you generated too many requests. Please limit your requests to less than 1 per 5 seconds.
+		  </p>
+		  <p>Contact: <%= link_to $profile.site_email, "mailto:#{$profile.site_email}" %></p>
+</body>
+</html>

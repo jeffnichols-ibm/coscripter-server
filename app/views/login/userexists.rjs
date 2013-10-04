@@ -1,0 +1,14 @@
+# (C) Copyright IBM Corp. 2010
+if @legalname == false
+    page['displayname_errors'].update(image_tag("red-cross.gif", {:valign => 'middle'}) + ' username <em>' + params['name'] + '</em> is not allowed')
+    page['terms_accepted'].setAttribute("disabled","true")
+else
+    if  @exists
+        page['displayname_errors'].update(image_tag('red-cross.gif', {:valign => 'middle'}) + ' username <em>' + params['name'] + '</em> already exists')
+        page['terms_accepted'].setAttribute("disabled","true")
+    else
+        page['displayname_errors'].update(image_tag('green-checkmark.gif', {:valign => 'middle'}) + ' username <em>' + params['name']+'</em> is available')
+        page['terms_accepted'].removeAttribute("disabled")
+    end
+end
+

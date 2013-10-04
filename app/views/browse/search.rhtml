@@ -1,0 +1,45 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="leftcolumn15"><div class="leftcolumn_inner">
+<div id="tagcloud_panel">
+  <%= render :partial => "tagcloud", :object=>@tagcloud %>
+</div>
+</div></div>
+<div class="rightcolumn85"><div class="rightcolumn_inner">
+
+<% if @query.nil? or @query.strip == "" %>
+    <h1>Invalid query</h1>
+
+    Please try your search again by typing one or more keywords into the
+    search box above.
+<% else %>
+    <% if @procedures.length == 0 and @people.length == 0 %>
+	<h1>No matches for "<%= h @query %>"</h1>
+    <% end %>
+
+    <% if @procedures.length > 0 %>
+	<h1>Scripts matching "<%= h @query %>"</h1>
+
+	<div class="sortheader">
+	   <%= will_paginate @procedures, :inner_window => 2, :outer_windows=>1 %>
+		<!-- make the gray box extend down to enclose the paginator -->
+		<br clear="both" />
+	</div>
+
+	<%= render :partial => 'procview', :locals => { :hidebuttons => false } %>
+
+	<div class="sortheader">
+	  <%= will_paginate @procedures, :inner_window => 2, :outer_windows=>1 %>
+
+		<!-- make the gray box extend down to enclose the paginator -->
+		<br clear="both" />
+	</div>
+    <% end %>
+
+    <% if @people.length > 0 %>
+    <br />
+	<h1>People matching "<%= h(@query) %>"</h1>
+	<%= render :partial => 'peopleview' %>
+    <% end %>
+
+<% end %>
+</div></div>

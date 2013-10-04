@@ -1,0 +1,56 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<svg:svg width="<%= width %>" height="<%= height %>">
+<% i_x = [width * 0.08, width * 0.92] %>
+<% i_y = [height * 0.1, height * 0.85] %>
+<svg:g>
+  <!-- draw a box around the border -->
+  <svg:rect fill="none" stroke="black" x="0" y="0"
+    width="<%= width %>" height="<%= height %>"/>
+
+  <!-- draw the X and Y axes -->
+  <svg:polyline fill="none" stroke="black"
+    points="<%= i_x[0] %>,<%= i_y[0] %>
+      <%= i_x[0] %>,<%= i_y[1] %>
+      <%= i_x[1] %>,<%= i_y[1] %>"/>
+
+  <!-- X and Y labels -->
+  <svg:text text-anchor="middle" x="<%= width/2 %>" y="<%= height*0.96 %>">
+    <%= barchart.xlabel %></svg:text>
+  <svg:text x="0" y="0"
+    transform="translate(<%= width*0.05 %>,<%= height/2 %>) rotate(-90)"
+    text-anchor="middle">
+    <%= barchart.ylabel %></svg:text>
+
+  <!-- y-axis labels -->
+  <svg:text x="<%= i_x[0]-5 %>" y="<%= i_y[1] %>" text-anchor="end"><%= barchart.ymin %></svg:text>
+  <svg:text x="<%= i_x[0]-5 %>" y="<%= i_y[0] + 10 %>" text-anchor="end"><%= barchart.ymax %></svg:text>
+
+  <% spanwidth = (i_x[1]-i_x[0])/barchart.spans.length %>
+  <% span_startoffset = spanwidth * 0.2 %>
+
+  <!-- bars -->
+  <% for span in barchart.spans %>
+    <% spanheight = (i_y[1]-i_y[0]) * (1.0*span[:y] / barchart.ymax) %>
+    <svg:rect fill="blue"
+      x="<%= i_x[0]+span_startoffset+(span[:x]*spanwidth) %>"
+      y="<%= i_y[0]+(i_y[1]-i_y[0]-spanheight) %>"
+      width="<%= spanwidth-span_startoffset %>"
+      height="<%= spanheight %>"
+      title="<%= span[:y] %>"/>
+
+    <svg:text x="0" y="0"
+      transform="translate(<%= i_x[0]+(spanwidth*0.3)+(span[:x]*spanwidth) %>,
+        <%= height * 0.88 %>) rotate(-45)"
+      text-anchor="middle"
+      style="font-size: 10px"><%= span[:xlabel1] %>
+      </svg:text>
+    <svg:text x="0" y="0"
+      transform="translate(<%= i_x[0]+(spanwidth*0.6)+(span[:x]*spanwidth) %>,
+        <%= height * 0.88 %>) rotate(-45)"
+      text-anchor="middle"
+      style="font-size: 10px"><%= span[:xlabel2] %>
+      </svg:text>
+  <% end %>
+</svg:g>
+</svg:svg>
+

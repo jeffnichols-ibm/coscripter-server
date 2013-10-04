@@ -1,0 +1,6 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "Editing: " + h(@procedure.title) %>
+
+<% form_tag({:action => 'update', :id => @procedure}, {:onSubmit=>"return false"}) do %>
+  <%= render :partial => 'editform' %>
+<% end %>

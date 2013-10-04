@@ -1,0 +1,16 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  url: http://cnn.com
+  title: CNN News
+  person_id: 1
+  wish: I want to know how to configure my CNN homepage.
+  created_at: 2008-06-05 15:06:00
+two:
+  id: 2
+  url: http://google.com
+  title: Google
+  person_id: 1
+  wish: How do I prevent Google from taking over the world?
+  created_at: 2008-07-05 15:06:00

@@ -1,0 +1,69 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<table width="100%">
+<%
+    if not defined? hidebuttons
+	hidebuttons = false
+    end
+  
+    for procedure in @procedures
+	snippet = getSnippet(procedure, 200)
+%>
+  <tr class="ProcListLine<%= procedure.private ? "_Private" : "" %>">
+
+    <td width="10px">
+      <% if procedure.private %>
+        <%= image_tag "lock.png", :size => "10x10", :alt => "Private" %>
+      <% end %>
+    </td>
+
+    <td>
+	<div class="proctitle">
+	<%= link_to h(procedure.title), {:action => 'script',
+	    :id => procedure.id } %>
+	</div>
+
+	<div class="snippet">
+	<% if snippet %>
+	<%= h(snippet)%>
+	<% end %>
+	</div>
+
+	<span class="procinfo">
+            <% if procedure.person.nil? %>
+              Anonymous
+            <% else %>
+	    <%= link_to h(procedure.person.name), {:action => 'person',
+		:id => procedure.person.shortname} %>
+            <% end %>
+	&nbsp;&nbsp;|&nbsp;&nbsp;
+	    <%= h procedure.modified_at.to_date.to_s(:long) %>
+	&nbsp;&nbsp;|&nbsp;&nbsp;
+	    <%= h pluralize(procedure.num_steps, " step", " steps") %>
+        <% if procedure.tags.length > 0 %>
+	&nbsp;&nbsp;|&nbsp;&nbsp;
+	    <% procedure.clean_tags.each do |clean_tag| %>
+		<%= link_to clean_tag, :controller => "browse",
+		    :action => "tag", :id => clean_tag %>
+	    <% end %>
+        <% end %>
+	</span>
+    </td>
+
+    <td valign="top" width="65px">
+    <% if not hidebuttons %>
+      <%= render :partial => "loadbutton", :locals => { :use_icons => true, :procedure => procedure } %>
+      <%= render :partial => "runbutton", :locals => { :use_icons => true, :procedure => procedure } %>
+    <% end %>
+    </td>
+
+<!--     <td width="145px" height="26px"> -->
+    <td width="80px" valign="top">
+      <%= render :partial => "favorites", :locals => {:procedure => procedure} %>
+    <div class="procinfo">
+    <%= sortorder_attribute(procedure,@sortorder) %>
+    </div>
+    </td>
+
+  </tr>
+<% end %>
+</table>

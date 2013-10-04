@@ -1,0 +1,10 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = h @procedure.title %>
+<div class="<%= @procedure.private? ? 'private_script' : 'public_script' %>">
+<h1><%= h @procedure.title %></h1>
+
+<!-- procedure body -->
+<div id="procedure-body">
+<%= format_markdown(@procedure.body.nil? ? '' : @procedure.body) %>
+</div>
+</div>

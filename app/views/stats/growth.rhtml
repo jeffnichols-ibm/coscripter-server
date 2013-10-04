@@ -1,0 +1,22 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<h1>Adoption trends</h1>
+
+<h2>Number of scripts created over time</h2>
+
+<p>
+Deleted scripts no longer show up in this chart.  It only shows scripts
+that still exist in the system.
+</p>
+
+<%= render(:partial => "barchart", :object => @scriptgrowth,
+  :locals => { :width => 1024, :height => 768 }) %>
+
+<h2>Number of distinct users</h2>
+
+<%= render(:partial => "barchart", :object => @usergrowth,
+  :locals => { :width => 1024, :height => 768 }) %>
+
+<h2>Number of script runs</h2>
+
+<%= render(:partial => "barchart", :object => @rungrowth,
+  :locals => { :width => 1024, :height => 768 }) %>

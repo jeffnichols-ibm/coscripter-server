@@ -1,0 +1,14 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<script>
+    if (coscripter_version >= 1) {
+    }
+    else {
+	var noticeMsg = '<div class="notice">CoScripter can run this script automatically for you. To enable this, you must '; 
+	// If Firefox is not being used...
+	if (typeof InstallTrigger == 'undefined') {
+	   noticeMsg += 'use <a href="http://www.getfirefox.com/">Mozilla Firefox</a> and ';
+	}
+	noticeMsg += '<%= link_to "download the CoScripter add-on", { :action => "extension", :controller => "browse" } %>.</div>';
+	document.getElementById("js_notice_placeholder").innerHTML = noticeMsg;
+    }
+</script>

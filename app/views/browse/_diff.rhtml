@@ -1,0 +1,15 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<table width="100%" border="0"><% for line in diff %><%
+if line[1] == " "
+	style = "diff"
+	marker = ""
+elsif line[1] == "-"
+	style = "diffdeleted"
+	marker = "&lt;&nbsp;"
+elsif line[1] == "+"
+	style = "diffadded"
+	marker = "&gt;&nbsp;"
+end
+%><tr class="<%= style %>"><td width="20px"><b><%= marker %></b></td>
+<td><%= format_markdown(line[0]) %></td></tr>
+<% end %>

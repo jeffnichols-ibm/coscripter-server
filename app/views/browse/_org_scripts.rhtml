@@ -1,0 +1,16 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if org_scripts.length == 0 %>
+There are no popular scripts in your organization.  Why don't you create one?
+<% else %>
+<table class="org_scripts" width="100%">
+<% i = 1 %>
+<% for script in org_scripts %>
+  <tr><td><small><%= i %></small></td>
+	<td><%= link_to h(script.title), :controller => "browse",
+		:action => "script", :id => script.id,
+		:source => "org" %></td>
+  </tr>
+  <% i = i + 1 %>
+<% end %>
+</table>
+<% end%>

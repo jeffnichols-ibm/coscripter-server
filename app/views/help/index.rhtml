@@ -1,0 +1,55 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="helptext">
+<h1>CoScripter help</h1>
+
+<p>
+CoScripter is a system for recording, automating, and sharing activities 
+performed in a web browser, such as printing photos online 
+or requesting a vacation hold for postal mail. CoScripter lets you make a recording as you perform an activity,
+play it back later automatically, and share it with your friends.
+</p>
+
+<p>To see CoScripter in action, watch our <%= link_to "screencast",
+:controller => :browse, :action => :video %> that shows how CoScripter works.
+</p>
+
+<p>We have new documentation as of August, 2011 covering:
+</p>
+<ul>
+<li><%= link_to "Sample CoScripter Commands", :action => "samplecommands" %></li>
+<li><%= link_to "CoScripter Tables", :action => "tables" %></li>
+</ul>
+
+
+<p>
+Older Help (which may be outdated) is available for the following topics:
+</p>
+<ul>
+<li><%= link_to "About the CoScripter add-on for Firefox", :action => "extension" %></li>
+<li><%= link_to "Downloading and installing CoScripter", :action => "download" %></li>
+<li><%= link_to "Running scripts", :action => :running %></li>
+<li><%= link_to "Creating new scripts", :action => :creating %></li>
+<li><%= link_to "Scripting language", :action => :language %>: what
+you can tell CoScripter to do, and how</li>
+<li><%= link_to "Personal database", :action => :database %>: how to
+create/run scripts that plug in your name and personal details</li>
+<li><%= link_to "Script privacy", :action => :privacy %>: who can
+access your script</li>
+<li><%= link_to "Bookmarking scripts", :action => :bookmark %>: ways to
+quickly accesss your scripts
+<li><%= link_to "What doesn't work yet", :action => :unsupported %>:
+current limitations for recording/playback</li>
+</ul>
+
+<p>
+Also see the <%= link_to "release notes", :controller => "release" %> for
+information about specific releases.
+</p>
+
+<p>
+Is there anything you would like help with that is not listed above?  Feel
+free to <%= link_to "contact us", $profile.contact_url %> and let us know,
+or use the <%= link_to "forums", $profile.forum_url %> for discussions with
+other CoScripter users.
+</p>
+</div>

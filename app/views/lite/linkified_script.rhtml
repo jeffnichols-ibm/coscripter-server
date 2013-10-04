@@ -1,0 +1,26 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<%
+# for the meta tag to specify the procedure url
+@procurl = url_for( :controller => 'browse', :action => 'procedure',
+    :id => @procedure, :only_path => false) %>
+
+<script>
+   function openUrlInMainWindow(url) {
+      var targetWindow = window.opener;
+      if (targetWindow == null) {
+         targetWindow = window;
+      }
+      targetWindow.location = url;
+   }
+</script>
+
+<h1><%= @procedure.title %></h1>
+
+<!-- procedure body -->
+<div id="procedure-body">
+<div class="procedure_body">
+<%= format_markdown(@linkified_script) %>
+</div>
+</div>
+
+<!-- %= link_to "Edit", :action => "edit", :id => @procedure %> -->

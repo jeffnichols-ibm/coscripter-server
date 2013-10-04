@@ -1,0 +1,37 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% spanid = "#{rand}-runbutton#{procedure.id}" %>
+<span id="<%= spanid %>"></span>
+<%
+if not defined? use_icons
+  use_icons = false
+end
+%>
+<script>
+    if (coscripter_version >= 1.346) {
+  	    var runlink = null; 
+    	if (coscripter_version >= 1.390) {
+	    	runlink = "coscriptrun:" + 
+			    "<%= url_for(:action => "script", :id => procedure,
+				:controller => "api",
+				:only_path => false) %>";
+		
+    	}else{
+ 			runlink = "coscriptrun:" + 
+           		"<%= url_for(:action => "script", :id => procedure,
+                :controller => "lite",
+                :only_path => false) %>";
+		}
+	var runbut = document.getElementById("<%= spanid %>");
+        <% if use_icons %>
+	runbut.innerHTML = '<a class="procbuttonimage" href="' +
+	    runlink + '" title="Run in sidebar">' +
+            '<%= image_tag 'run-in-sidebar.gif', {:align=>"absmiddle"} %>' + "</a>";
+        <% else %>
+	runbut.innerHTML = '<a class="runButton procbutton" href="' +
+	    runlink + '" title="Load into sidebar and run"><span style="display: none;">' +
+	    <%= procedure.title.to_json %> + "</span></a>";
+        <% end %>
+    }
+</script>
+
+

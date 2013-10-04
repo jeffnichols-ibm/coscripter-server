@@ -1,0 +1,275 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first:
+  id: 1
+  title: First Procedure
+  person_id: 1
+  created_at: 2007-01-26 13:33:00
+  modified_at: 2007-01-26 13:33:00
+  body: "* go to google.com\n* type IBM\n* click search button"
+  private: false
+
+second:
+  id: 2
+  title: "Second Procedure, Editors' Pick"
+  person_id: 1
+  created_at: 2007-01-26 13:33:00
+  modified_at: 2007-01-26 13:33:00
+  body: "no body here"
+  private: false
+
+threesteps_ver1:
+  id: 3
+  title: Three-step procedure
+  person_id: 1
+  created_at: 2007-02-06 17:46:00
+  modified_at: 2007-02-06 17:46:00
+  body: "\n* step one\n\n* step 2\n* step 3\n\n\n"
+  private: false
+
+threesteps_ver2:
+  id: 4
+  title: Another three-step procedure
+  person_id: 1
+  created_at: 2007-02-06 17:46:00
+  modified_at: 2007-02-06 17:46:00
+  body: "* step 1\n* step 2\n*step 3"
+  private: false
+
+threesteps_ver3:
+  id: 5
+  title: A third three-step procedure
+  person_id: 1
+  created_at: 2007-02-06 17:46:00
+  modified_at: 2007-02-06 17:46:00
+  body: "my first script\n\n* go to google.com\n* type koala\n* press search\n"
+  private: false
+
+nosteps:
+  id: 6
+  title: A no-step procedure
+  person_id: 1
+  created_at: 2007-02-06 17:46:00
+  modified_at: 2007-02-06 17:46:00
+  body: "this proc*dure * has no steps"
+  private: false
+
+private:
+  id: 7
+  title: A private procedure
+  person_id: 1
+  created_at: 2007-02-19 16:09:00
+  modified_at: 2007-02-19 16:09:00
+  body: no body in this private procedure
+  private: true
+
+private_editorspick:
+  id: 8
+  title: Editor pick that is also private
+  person_id: 1
+  created_at: 2007-02-22 12:44:00
+  modified_at: 2007-02-22 12:44:00
+  body: this body is private
+  private: true
+
+last_edited_by_null:
+  id: 9
+  title: Edited by someone who has been deleted
+  person_id: 1
+  created_at: 2007-05-25 11:22:00
+  modified_at: 2007-05-25 11:22:00
+  body: does not matter
+  private: false
+
+unicode:
+  id: 10
+  title: Iñtërnâtiônàlizætiøn title
+  person_id: 1
+  created_at: 2007-06-06 11:05:00
+  modified_at: 2007-06-06 11:05:00
+  body: Iñtërnâtiônàlizætiøn in the body too
+  private: false
+
+make_this_private:
+  id: 11
+  title: My public script
+  person_id: 1
+  created_at: 2007-06-25 15:46:00
+  modified_at: 2007-06-25 15:46:00
+  body: no body
+  private: false
+
+executed_script:
+  id: 12
+  title: Script that is run multiple times
+  person_id: 1
+  created_at: 2007-07-09 12:32:00
+  modified_at: 2007-07-09 12:35:00
+  body: no body
+  private: false
+  last_executed_at: 2007-07-09 15:32:00
+  usagecount: 2
+
+modified_more_recently_than_executed:
+  id: 13
+  title: script that was modified more recently than it was run
+  person_id: 1
+  created_at: 2007-07-09 10:32:00
+  modified_at: 2007-07-09 17:32:00
+  body: no body
+  private: false
+  last_executed_at: 2007-07-09 16:02:00
+  usagecount: 1
+
+script_with_nonexistent_person:
+  id: 14
+  title: script with deleted creator
+  person_id: 999
+  created_at: 2007-08-09 11:21:00
+  modified_at: 2007-08-09 11:21:00
+  body: nothing here
+  private: false
+
+script_with_comments:
+  id: 15
+  title: script with procedure_comments
+  person_id: 1
+  created_at: 2007-08-09 11:21:02
+  modified_at: 2007-08-09 11:21:02
+  body: "nothing here"
+  private: true
+
+relevance_test:
+  id: 16
+  title: Check American Airlines
+  person_id: 1
+  created_at: 2007-09-10 11:19:00
+  modified_at: 2007-09-10 11:19:00
+  body: * go to www.aa.com
+  private: false
+
+url_test:
+  id: 17
+  title: Test script with URL
+  person_id: 1
+  created_at: 2008-01-09 11:20:00
+  modified_at: 2008-01-09 11:20:00
+  body: * go to http://www.mtv.com
+  private: false
+
+jimmy_script:
+  id: 18
+  title: Jimmy test script
+  person_id: 2
+  created_at: 2008-05-09 11:20:00
+  modified_at: 2008-05-09 11:20:00
+  body: * go to http://www.mtv.com
+  private: false
+
+script_with_comments:
+  id: 19
+  title: script with comments inline
+  person_id: 1
+  created_at: 2008-07-21 13:49:00
+  modified_at: 2008-07-21 13:49:00
+  body: "This script contains comments\n\n* click the \"foo\" link\n\nSecond comment\n\n* click the \"bar\" link\n\nThird comment\n\n* click the \"baz\" link"
+  private: false
+
+script_with_google_no_newline:
+  id: 20
+  title: go to google script
+  person_id: 2
+  created_at: 2008-07-21 14:40:00
+  modified_at: 2008-07-21 14:40:00
+  body: "* go to google.com"
+  private: false
+
+script_to_be_updated:
+  id: 21
+  title: this script will be updated
+  person_id: 1
+  created_at: 2008-12-03 15:20:00
+  modified_at: 2008-12-03 15:20:00
+  body: there is no body
+  private: false
+
+script_with_changelog:
+  id: 22
+  title: Changed script
+  person_id: 1
+  created_at: 2008-12-04 15:20:00
+  modified_at: 2008-12-04 15:20:00
+  body: "line1\nline2\nline3\nline4"
+  private: false
+
+script_with_two_contributors:
+  id: 23
+  title: original version
+  body: "original body"
+  person_id: 1
+  created_at: 2008-12-08 11:04:00
+  modified_at: 2008-12-08 11:04:00
+  private: false
+
+script_created_by_tessa_to_be_updated:
+  id: 24
+  title: original version
+  body: "original body"
+  person_id: 1
+  created_at: 2008-12-08 11:05:00
+  modified_at: 2008-12-08 11:05:00
+  private: false
+
+script_to_be_deleted:
+  id: 25
+  title: delete me
+  body: "delete me too"
+  person_id: 1
+  created_at: 2008-12-09 14:48:00
+  modified_at: 2008-12-09 14:48:00
+  private: false
+
+script_with_multiple_comments:
+  id: 26
+  title: multi-comment script
+  body: no body
+  person_id: 1
+  created_at: 2008-12-09 20:33:00
+  modified_at: 2008-12-09 20:33:00
+  private: false
+
+jimmy_private_script:
+  id: 27
+  title: jimmy private script
+  body: no body
+  person_id: 2
+  created_at: 2009-01-15 18:19:00
+  modified_at: 2009-01-15 18:19:00
+  private: true
+
+clemens_private_shared_script:
+  id: 28
+  title: clemens private shared script
+  body: share me
+  person_id: 7
+  created_at: 2009-01-15 18:19:00
+  modified_at: 2009-01-15 18:19:00
+  private: true
+
+jimmys_private_shared_script:
+  id: 29
+  title: jimmys private shared script
+  body: share me
+  person_id: 2
+  created_at: 2009-01-15 18:19:00
+  modified_at: 2009-01-15 18:19:00
+  private: true
+
+allen_script_with_comments:
+  id: 30
+  title: "allen's script"
+  body: comment on me
+  person_id: 5
+  created_at: 2009-03-19 18:19:00
+  modified_at: 2009-03-19 18:19:00
+  private: false

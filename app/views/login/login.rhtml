@@ -1,0 +1,29 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = 'Login to CoScripter' %>
+<div class="content-area">
+<%= error_messages_for 'user' %>
+
+<div style="text-align: left;">
+Please log in with your <%= @credentialName %> and password.
+</div>
+
+<% form_tag do %>
+<input type="hidden" name="redirect" value="<%= h @redirect %>">
+<table style="text-align: left;">
+    <tr>
+	<td style="text-align: right;"><label for="user_w3login">ID:</label></td>
+	<td><%= text_field('user', 'w3login') %></td>
+    </tr>
+    <tr>
+	<td style="text-align: right;"><label for="user_w3pass">Password:</label></td>
+	<td><%= password_field('user', 'w3pass') %></td>
+    </tr>
+    <tr>
+	<td></td>
+	<td><input type="submit" value="Login"/></td>
+    </tr>
+</table>
+
+<%= render :partial => "shared/#{$profile.profilename}/login_instructions" %>
+<% end %>
+</div>

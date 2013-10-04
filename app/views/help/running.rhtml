@@ -1,0 +1,132 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="helptext">
+<h1>Running scripts</h1>
+
+<p>
+Each script on the CoScripter website consists of a sequence of
+instructions.  These scripts are designed to be easily readable, and if you
+like, you can simply follow the instructions yourself.
+</p>
+<p>
+However, we also provide a extension for the Firefox web browser that can run
+scripts for you.  Start by installing the CoScripter Firefox
+extension following the directions on <%= link_to "the download page",
+:controller => :browse, :action => :download %>.
+</p>
+
+<h2>Loading a script into CoScripter</h2>
+
+<p>
+After installing the extension, each script page on the CoScripter website
+will have an additional button labeled "Open in Sidebar":
+</p>
+
+<div class="help-div">
+<%= image_tag "open-in-sidebar.png", :alt => "&quot;Open in sidebar&quot;
+button on CoScripter website", :class => "help-image" %>
+</div>
+
+<p>
+Clicking on this button causes the script you are reading to open in the
+CoScripter sidebar, which appears on the left side of your Firefox window.
+</p>
+
+<div class="help-div">
+<%= image_tag "sidebar-runmode.png", :alt => "Screenshot of CoScripter
+sidebar", :class => "help-image" %>
+</div>
+
+<p>
+You can click the Step button (<%= image_tag "step.gif", :alt => "step" %>)
+to <b>perform just one step</b> at a time, or click the Run button (<%=
+image_tag "run.gif", :alt => "run" %>) to <b>run the entire script</b>.
+The New button (<%= image_tag "new.gif", :alt => "new" %>) lets you <%=
+link_to "create a new script", :action => :creating %>, and the Wiki button
+(<%= image_tag "feathers-icon.gif", :alt => "coscripter" %>) takes you to the current
+script in the CoScripter wiki.
+</p>
+
+<h2>Stepping through a script</h2>
+
+<p>
+The first time you load a script into the CoScripter sidebar, you will
+probably want to step through it one step at a time, in order to see what it
+will do.  For example, try loading this tutorial script into your sidebar:
+<%= link_to "Getting started with CoScripter", :controller => :browse,
+:action => :script, :id => 1 %> (open that link in a new
+window, then press the "Open in sidebar" button on that page).
+</p>
+
+<p>
+Once the script is loaded in the sidebar, you can step through it using the
+Step button at the top of the sidebar.  Press this button once, and the
+first instruction will execute (<i>go to "<a href="http://www.google.com/"
+class='external free' title="http://www.google.com/"
+rel="nofollow">http://www.google.com/</a>"</i>).  Notice that the second step (<i>click
+the "Images" link</i>) is now highlighted in green in the sidebar.
+</p>
+
+<div class="help-div">
+<%= image_tag "sidebar-step2.png", :alt => "Ready to run the second step",
+  :class => "help-image" %>
+</div>
+
+<p>
+If you look over on the web page, the Images link is now highlighted in
+green as well, showing you what CoScripter will do when you execute the
+next step:
+</p>
+
+<div class="help-div">
+<%= image_tag "google-step2.png", :alt => "The images link is highlighted",
+  :class => "help-image" %>
+</div>
+
+<p>
+Now you can click the Step button (<%= image_tag "step.gif", :alt => "step"
+%>) again to execute the second step.  CoScripter will automatically click
+on the "Images" link for you and advance to the third step.  You can
+continue stepping until the script is finished.
+</p>
+
+<h2>Waiting for your input</h2>
+
+<p>
+<b>If the current step has the word "you" in it</b>, CoScripter assumes
+that it's intended for a human and will not execute it.  Instead,
+CoScripter highlights the script step in red, instead of green, and stops,
+waiting for you to do something.  When you're ready to continue, click the
+Run or the Step button, and CoScripter will move on to the next step.
+</p>
+
+<p>
+<b>If the current step has the word "your" in it</b>, CoScripter assumes
+it's referring to an entry in your "Personal Data", in the bottom half of
+the sidebar.  This is a nice way to make scripts that fill in different
+personal data for each user.  See the <%= link_to "Personal database",
+:action => :database %> page for more information about this feature.
+</p>
+
+<h2>Automatically running the script to completion</h2>
+
+<p>
+Sometimes you don't want to laboriously step through a script line by line,
+especially if you have run the script many times before and are confident
+that it will do the right thing.  If you click the Run button (<%=
+image_tag "run.gif", :alt => "run" %>), CoScripter will automatically run
+the rest of the script for you, starting from the current
+step.  The run will stop if CoScripter encounters a "you" instruction, or
+if it reaches the end of the script.  You can also press the Stop button
+(<%= image_tag "stop.gif", :alt => "stop" %>) to stop the script while it's
+running.
+</p>
+
+<h2>Skipping around in a script</h2>
+
+<p>
+If you want to replay a previous step or skip around to different parts of
+the script, click on a step, and it will become the current step.  If you
+then click Step or Run, the script will start from that step.  You can use
+this feature to skip over steps you don't want CoScripter to perform.
+</p>
+</div>

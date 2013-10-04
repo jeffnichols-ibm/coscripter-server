@@ -1,0 +1,7 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<table border="1">
+<tr><td><b>Date</b></td><td><b>URI</b></td><td><b>By</b></td></tr>
+<% for n in clicktable %>
+<tr><td><%= n.accessed_at.strftime("%m/%d/%y") %></td><td><%= n.uri %></td><td><%= n.person.nil? ? "???" : n.person.name %></td></tr>
+<% end %>
+</table>

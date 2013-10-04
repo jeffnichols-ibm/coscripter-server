@@ -1,0 +1,35 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<h1>Click-throughs</h1>
+
+<ul>
+<li> <%= link_to "#{@newsletter.length} newsletter clicks",
+	"#newsletter" %>
+<li> <%= link_to "#{@sna.length} social network box clicks",
+	"#sna" %>
+<li> <%= link_to "#{@org.length} organization box clicks",
+	"#org" %>
+
+<h2><a name="newsletter">From the social network newsletter</a></h2>
+
+<p>
+Total: <%= @newsletter.length %> records with <tt>source=newsletter</tt> or <tt>newsletter=true</tt>
+</p>
+
+<%= render :partial => "clicktable", :object => @newsletter %>
+
+<h2><a name="sna">From the social-network recommendations</a></h2>
+
+<p>
+Total: <%= @sna.length %> records with <tt>source=sna</tt>
+</p>
+
+<%= render :partial => "clicktable", :object => @sna %>
+
+<h2><a name="org">From the organizational recommendations</a></h2>
+
+<p>
+Total: <%= @org.length %> records with <tt>source=org</tt>
+</p>
+
+<%= render :partial => "clicktable", :object => @org %>
+

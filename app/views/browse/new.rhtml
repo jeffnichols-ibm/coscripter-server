@@ -1,0 +1,44 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "Create a CoScript" %>
+
+<br/>
+
+<!-- no action in the start_form_tag makes it default to the same action -->
+<div class="leftcolumn"><div class="leftcolumn_inner">
+<% form_tag do %>
+    <%= render :partial => 'editform' %>
+    <%= submit_tag 'Save changes' %>
+    <%= link_to 'Cancel', :action => 'index' %>
+<% end %>
+</div></div>
+
+<div class="rightcolumn"><div class="rightcolumn_inner">
+<h1>Create a CoScript</h1>
+
+<p>
+Start typing your script into the box to the left.  Put each step on a
+separate line, with an asterisk (*) at the beginning of the line, to
+indicate that it is a step.
+</p>
+
+<p>
+CoScripter understands a simple language for navigating web pages and filling
+out forms.  Use "go to" to tell it to go to a particular URL.  Use "click
+on" to tell it to click on a particular button or link, and try to describe
+it using words in or close by the target.  Use "enter" to tell it to type
+something into a text field, and describe the text field using words near
+it.
+</p>
+
+<p>
+Examples:
+</p>
+
+<p>
+* go to "http://myurl.com"<br>
+* click the "Register project" link<br>
+* enter "Tessa" into the "Name" textbox<br>
+* click the "Search" button<br>
+* enter your "eye color" into the "Preference" textbox<br>
+</p>
+</div></div>

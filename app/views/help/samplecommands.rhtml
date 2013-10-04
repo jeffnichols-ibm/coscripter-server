@@ -1,0 +1,294 @@
+<!-- (C) Copyright IBM Corp. 2011 -->
+<div class="helptext">
+<h1>Sample CoScripter Commands</h1>
+
+<h2>Clicking buttons</h2>
+<p>
+Start by using CoScripter to record an action, and then use the sample commands below to see how you can modify the recording.
+</p>
+
+<ul><li> click the "Submit" button
+</li><li> click the button that starts with "Sub"
+</li><li> click the button that contains "bmi"
+</li><li> click the button that ends with "mit"
+</li></ul>
+<p><br />
+</p>
+<ul><li> click the third button
+</li><li> click the third "Submit" button
+</li><li> click the number "3" "Submit" button
+
+</li><li> click the # "3" "Submit" button
+</li><li> click the # your "counter" "Submit" button
+</li></ul>
+<p><br />
+</p>
+<ul><li> click the your "button name" button
+</li></ul>
+
+
+
+<p></p>
+<h2>Entering text into textboxes</h2>
+<p><i>HINT:</i> Parts of commands often need to be enclosed in quotation marks. Be sure to follow the examples closely. 
+If you get an "Error parsing this step" message, try pasting in a related sample command from this page, and then modifying it.
+</p><p><br />
+</p>
+<ul><li> enter "David Henderson" into the "Name:" textbox
+</li><li> enter "David Henderson" into the textbox that starts with "Name"
+</li><li> enter your "name" into the "Name:" textbox
+</li><li> append ", Esq." to the "Name:" textbox
+</li></ul>
+<p>If you need to insert a return character into a textbox, you can use a command with only "\n" as the text:
+</p>
+<ul><li> enter "\n" into the "Address" textbox
+</li><li> append "\n" to the "Address" textbox
+</li></ul>
+
+
+
+<p></p>
+<h2>Radio buttons, Checkboxes, and Listboxes</h2>
+<ul><li> turn on the "server" radiobutton
+</li><li> turn on the "italics" checkbox
+</li><li> turn off the "italics" checkbox
+
+</li></ul>
+<p><br />
+</p>
+<ul><li> select the “File&gt;Close Tab” menu 
+</li><li> select "CA" from the "State" listbox
+</li><li> select "CA" from the listbox that contains "tat"
+</li><li> select your "state" from the your "category" listbox
+</li><li> select "San Jose, CA - SJC" from the "City:" listbox
+</li><li> select the item that contains "SJC” from the “City:” listbox
+</li></ul>
+
+
+
+<p></p>
+<h2>Personal database</h2>
+<h3>Adding values to your Personal Database</h3>
+<p>There is a separate "put" command for entering data into the Personal DB:
+</p>
+<ul><li> put "San Jose" into your "work city"
+</li><li> put the clipboard into your "work city"
+</li><li> increment your "counter"
+</li><li> increment your "counter" by 5
+</li><li> decrement your "counter" by 2
+</li></ul>
+
+<h3>Accessing personal database variables</h3>
+<p><b>your</b>: The word <i>your</i> refers to variables that you add to the "Personal DB" tab, which is located in a tab at the bottom of the CoScripter sidebar. 
+You can use a reference to an entry in your “Personal DB” in almost any place where a string or a number is used in a CoScripter command:
+</p>
+<pre>* enter your “First Name” into the “Name” textbox
+* select your “home city” from the “Cities” listbox
+* click the your “button name” button
+</pre>
+<p>To add an entry to the Personal DB, simply type a line of the form
+</p>
+<pre>variableName = variableValue
+</pre>
+<p>into the Personal DB.
+
+
+<p></p>
+<h2>Copy and Paste</h2>
+<ul><li> copy the "Name:" textbox
+</li><li> paste into the "Name:" textbox
+<dl><dd><dl><dd> (you can record this by using the Edit&gt;Paste menu item)
+</dd></dl>
+</dd></dl>
+</li></ul>
+
+
+
+<p></p>
+<h2>Referring to items with XPaths</h2>
+<p>XPaths:
+</p>
+<ul><li> click x"//*[@id='bodyContent']/UL[1]/LI[2]"
+</li><li> click x"id('mx46')"
+<dl><dd><dl><dd> (precede an XPath with the letter x)
+</dd></dl>
+</dd></dl>
+</li><li> click the "//*[@id='bodyContent']/UL[1]/LI[2]" xpath
+<dl><dd><dl><dd> (alternative syntax for XPaths)
+</dd></dl>
+</dd></dl>
+</li></ul>
+
+
+<p></p>
+<h2>Using JavaScript</h2>
+<p>javascript provides a way for programmers to extend the capabilities of CoScripter.
+</p><p>javascript inside CoScripter commands:
+</p>
+<ul><li> enter j"new Date().toDateString().substring(0,3)" into the "Day" textbox
+</li></ul>
+<p>You can reference values in the Personal DB or the scratchtable using the "personalDB[]" and "scratchtable[][]" arrays:
+</p>
+<ul><li> enter j'Number(personalDB["height"]) * 2.45' into the "size" textbox
+
+</li></ul>
+<ul><li> select j'scratchtable[2]["Color"]' from the "Fabric Color" listbox
+</li></ul>
+<p>It is also possible to use javascript to generate an XPath:
+</p>
+<ul><li> click j" 'x\"//*[@id=\'bodyContent\']/UL[1]/LI[' + personalDB['counter'] + ']\"'   "
+</li></ul>
+
+
+<p></p>
+<h2>Multiple windows</h2>
+<ul><li> click the “OK” button in the dialog box
+<dl><dd><dl><dd> (only works for OK and Cancel for now, and the CoScripter Preference "Record actions in dialog boxes" must be turned on)
+</dd></dl>
+</dd></dl>
+</li></ul>
+
+
+
+<p></p>
+<h2>Page and tab navigation</h2>
+<ul><li> go to "<a href="http://google.com" class="external free" title="http://google.com" rel="nofollow">http://google.com</a>"
+</li><li> go to "google.com"
+
+</li><li> go to your "search engine"
+</li></ul>
+<p><br />
+</p>
+<ul><li> go to tab # "5"
+<dl><dd><dl><dd> (note the quotes around the number)
+</dd></dl>
+</dd></dl>
+</li><li> go to the "Faces" tab
+</li><li> go to the tab that contains "aces"
+</li><li> go to the "Faces" window
+
+</li><li> go to the window that contains "aces"
+</li></ul>
+
+
+<p></p>
+<h2>Searching within the web page</h2>
+<ul><li> search for "library"
+</li><li> search for your "searchTerm"
+</li><li> search next
+</li><li> search previous
+
+<dl><dd><dl><dd> (uses Firefox's Find command)
+</dd></dl>
+</dd></dl>
+</li></ul>
+
+
+
+<p></p>
+<h2>Pausing or delaying script execution</h2>
+<ul><li> pause 3 seconds
+</li><li> pause 1 seconds
+<dl><dd><dl><dd> (note that it has to be plural)
+</dd></dl>
+</dd></dl>
+</li></ul>
+
+
+
+
+<p></p>
+<h2>Conditionals</h2>
+<ul><li> * if there is a “Log In” button
+<ul><li>	* click the “Log In” button
+</li></ul>
+<dl><dd><dl><dd> (note that the second and subsequent lines are indented under the "if")
+
+</dd></dl>
+</dd></dl>
+</li></ul>
+<p><br />
+</p>
+<ul><li> if your "current city" equals "San Jose"
+</li><li> if your "current city" starts with "San"
+</li><li> if your "counter" = "5"
+</li><li> if your "counter" &lt; your "max value"
+</li></ul>
+<p><br />
+
+</p>
+<ul><li> if there is a "submit" button 
+</li><li> if there is no "submit" button 
+</li><li> if there is not a "submit" button	
+</li><li> if there is a div 
+</li><li> if there is no h2 
+</li><li> if there is not an element
+</li><li> if there is an element that contains "was successful"
+</li><li> if there is no div that contains "was successful"
+
+</li><li> if there is not an h2 that contains "was successful" 
+</li><li> if there is text "David" in the "first name" textbox
+<dl><dd><dl><dd> (It's admittedly confusing that "if there is text" tests whether the text exactly matches what is in the textbox.  It does not test whether the text is contained in the textbox.)
+</dd></dl>
+</dd></dl>
+</li><li> if there is no text "David" in the "first name" textbox
+</li><li> if there is not text "David" in the "first name" textbox
+</li></ul>
+<p><br />
+</p>
+<ul><li> if there is a selection 
+
+<dl><dd><dl><dd> (since Firefox's Find command results in no selection if it fails, this can be used to test whether Find succeeded)
+</dd></dl>
+</dd></dl>
+</li></ul>
+<p><br />
+An "if" command can be followed by an "else" command:
+</p>
+<ul><li> else
+</li></ul>
+
+
+<p></p>
+<h3>Waiting for an element to appear</h3>
+<p>"if there is" can be replaced with "wait until there is" in any of the "if" commands above. For example:
+</p>
+<ul><li> wait until there is a "Submit" button
+</li><li> wait until there is no "State:" listbox
+</li><li> wait until there is an element that contains "was successful"
+</li><li> wait until there is a div that contains "Payment Information"
+</li></ul>
+<p>Note that if you are trying to interact with a page element, such as clicking a button, CoScripter will automatically wait until that element becomes available before invoking it.  Normally the wait commands are only necessary for output elements.
+</p>
+
+
+
+<p></p>
+<h2>Loops</h2>
+<ul><li> repeat
+<dl><dd><dl><dd> (an infinite looop that repeats the commands indented beneath it)
+</dd></dl>
+</dd></dl>
+</li></ul>
+
+
+
+<p></p>
+<h2>Menus</h2>
+<ul><li> select the “Tools&gt;CoScripter” menu
+<dl><dd><dl><dd> (closes the CoScripter sidebar and stops script execution)
+</dd><dd> (to record menu commands, you have to use your mouse to select the actual menu item. Keyboard shortcuts won't record properly)
+</dd></dl>
+</dd></dl>
+</li></ul>
+<p><br />
+</p>
+
+
+
+<p></p>
+<h2>Waiting for user input</h2>
+<p><b>you</b>: Commands that contain the word <i>you</i> will not be performed by CoScripter. Instead, CoScripter will stop at the command and wait for you to click Step or Run again.
+
+
+</div>

@@ -1,0 +1,41 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div id="tagcloud" class="tagcloud">
+<div><h3 class="tagcloudbox">
+<%
+if not defined?(useNumPersonHeader).nil?
+   if useNumPersonHeader
+        if tagcloud.length == 0 or tagcloud[:people].length == 0
+        	header = "Tagged by 0 people"
+        else
+		    header = 'Tagged by <span title="' +
+		    	tagcloud[:people].collect{|tagger| tagger.name}.join(', ') +
+		        '">' +
+		        pluralize(tagcloud[:people].length, " person", " people") +
+		        '</span>'
+        end
+   end
+elsif defined?(header).nil?
+   header = nil
+end
+%>
+<%
+if header.nil? %>
+Related tags
+<% else %>
+   <%= header.to_s %>
+<% end %>
+</h3></div>
+<br>
+<%
+if not tagcloud[:tags].nil?
+  for (tag, info) in tagcloud[:tags] %>
+   <%= link_to h(tag),
+       {:action => 'tag',
+        :id => tag}, 
+       {:class => "tag tagcloud#{info[:size]}",
+        :title => info[:people].collect{|tagger| tagger.name}.join(', ')} %>
+<%
+  end
+end %>
+
+</div>

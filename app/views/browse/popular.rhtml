@@ -1,0 +1,18 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter: Popular scripts" %>
+
+<div class="leftcolumn15"><div class="leftcolumn_inner">
+<div id="tagcloud_panel">
+  <%= render :partial => "tagcloud", :object=>@tagcloud %>
+</div>
+</div></div>
+<div class="rightcolumn85"><div class="rightcolumn_inner">
+
+<h1>Most popular scripts:</h1>
+
+<%= render :partial => "paginator", :locals => {:paginator => @proc_pages} %>
+<br clear="both"/>
+<%= render :partial => 'procview', :locals => { :hidebuttons => false } %>
+<%= render :partial => "paginator", :locals => {:paginator => @proc_pages} %>
+
+</div></div>

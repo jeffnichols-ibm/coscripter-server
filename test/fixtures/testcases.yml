@@ -1,0 +1,35 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+#first:
+#  id: 1
+#another:
+#  id: 2
+#
+
+testcase:
+  id: 1
+  url: http://google.com
+  slop: click the "News" link
+  target: /HTML[1]/BODY[1]
+  action: click
+
+second:
+  id: 2
+  url: http://yahoo.com
+  slop: click the "News" link
+  target: /FOO
+  action: click
+
+third:
+  id: 3
+  url: http://yahoo.com
+  slop: click the "News" link
+  target: /FOO
+  action: click
+  
+deletetest:
+  id: 99
+  url: 'http://facebook.com'
+  slop: click the "Login" link
+  target: /HTML[1]/BODY[1]
+  action: click

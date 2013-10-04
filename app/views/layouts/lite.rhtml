@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<!-- (C) Copyright IBM Corp. 2010 -->
+<head>
+<title><%= @page_title || "CoScripter" %></title>
+<% if defined? @procedure and not @procedure.nil?
+# meta tags to specify the procedure url, and entry points to the api
+@metatags = {
+  'coscripter-script-lite-url' => url_for(:controller => 'lite',
+      :action => 'script', :id => @procedure, :only_path => false),
+  'coscripter-script-url' => url_for(:controller => 'browse',
+      :action => 'script', :id => @procedure, :only_path => false),
+  'coscripter-usagelog-url' => url_for(:controller => 'api', :action => 'usagelog',
+    :only_path => false),
+  'coscripter-executed-url' => url_for(:controller => 'api', :action => 'executed',
+    :only_path => false),
+  'coscripter-save-url' => url_for(:controller => 'api', :action => 'script',
+    :only_path => false),
+  'coscripter-edit-url' => url_for(:controller => 'lite', :action => 'edit',
+    :id => @procedure, :only_path => false),
+  'coscripter-script-id' => @procedure.id
+  }
+if $profile.show_email?
+  @metatags['coscripter-author-email'] = @procedure.person.nil? ? "" :
+    @procedure.person.email
+end
+for name, val in @metatags %><meta name="<%= name %>" content="<%= val %>">
+<% end %><% end %>
+<%= stylesheet_link_tag "lite", :media => "all" %>
+<%= javascript_include_tag "prototype" %>
+<link rel="icon" href="<%= image_path("coscripter-favicon.gif") %>" >
+</head>
+<body bgcolor="#ffffff">
+<!-- the main content -->
+<%= @content_for_layout %>
+</body>
+</html>
+

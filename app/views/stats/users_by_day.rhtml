@@ -1,0 +1,17 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<h1>Users by day</h1>
+
+<p>
+This is the number of users who created/modified or executed a script per
+day, not including us.
+</p>
+
+<% for result in @data %>
+<% weekend = result[:day].wday == 6 || result[:day].wday == 0 %>
+<% img_file = weekend ? "gray.gif" : "blue.gif" %>
+<%= result[:day] %>:
+<%= image_tag(img_file, :height => "10",
+  :width => "#{result[:numpeople]*20}") %>
+(<%= result[:numpeople] %>)<br>
+
+<% end %>

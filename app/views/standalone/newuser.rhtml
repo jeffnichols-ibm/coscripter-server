@@ -1,0 +1,34 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = 'Register for CoScripter' %>
+
+<div class="content-area">
+<%= error_messages_for 'user' %>
+
+<h1>Register for a <%= $profile.id_name %></h1>
+
+<% form_tag do %>
+<input type="hidden" name="redirect" value="<%= @redirect %>">
+<table style="text-align: left;">
+    <tr>
+	<td style="text-align: right;">E-mail address:</td>
+	<td><%= text_field('user', 'email') %></td>
+    </tr>
+    <tr>
+	<td style="text-align: right;">Password:</td>
+	<td><%= password_field('user', 'password') %></td>
+    </tr>
+</table>
+
+<br/>
+<br/>
+
+<%= render :partial => "shared/#{$profile.profilename}/tos" %>
+<%= render :partial => "shared/#{$profile.profilename}/license" %>
+
+<p>
+By registering for CoScripter, you agree to the terms of service and licensing agreements above.
+</p>
+<input type="submit" value="Register"/>
+<% end %>
+
+</div>

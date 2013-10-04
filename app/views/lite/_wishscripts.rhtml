@@ -1,0 +1,20 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if wishscripts.length > 0 %>
+<p>
+Wished-for scripts on <b><%= h @title %></b>:
+
+<div class="proclist_scrolled">
+<% for wish in wishscripts %>
+<div>
+<% person_url = url_for(:controller => :browse, :action => :wishlist, :id =>
+	wish.person.shortname) %>
+<% wish_url = url_for(:controller => :browse, :action => :wish, :id =>
+	wish.id) %>
+<%= link_to_function h(wish.person.name), "window.open('" + person_url + "')" %>:
+<%= link_to_function h(snip(wish.wish, 75)), "window.open('" + wish_url + "')" %>
+</div>
+<% end %>
+</div>
+</p>
+<% end %>
+

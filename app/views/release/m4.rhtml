@@ -1,0 +1,78 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter M4.1 Release Notes" %>
+<div class="releasetext">
+<h1>Release Notes for M4.1</h1>
+
+<p>Milestone 4.1 (version 1.402) was released on February 28, 2008.</p>
+
+<h2>Logging your actions (IBM only)</h2>
+
+<p>To further our research, we log user actions when the CoScripter sidebar is open. We will analyze this data to better understand how CoScripter is being used, how well it works, and what users want to do with it. 
+The log data is sent to our CoScripter server inside IBM. </p>
+
+<p><b>All of this log data is anonymized</b> before it is sent. As an example, the data that we record contains information like this: </p>
+
+<pre>
+* click the "Home" toolbar item
+* enter "361e9f" into the "1f44e4" textbox
+* go to "d62f8e/96adde?383e57"
+* click the "15242a" link
+</pre>
+
+<div class="notice">
+<p>Please support our research and leave this logging enabled. If, however, you want to turn off logging, do the following:</p>
+<ul>
+<li>Choose "Tools &gt; Add-ons" from the main Firefox menu</li>
+<li>Click the "Options" or "Preferences" button for CoScripter</li>
+<li>Click the "Logging" tab</li>
+<li>Click the "Never" button</li>
+</ul>
+
+<p>Clicking the "Show Log" button in the "Logging" tab shows you the anonymized information that is being sent to the server.</p>
+</div>
+
+<h2>Action History</h2>
+
+<p>There is a new Action History tab in the CoScripter sidebar, which lists your actions even if CoScripter is not in recording mode.  So, if you forget to record and later want to make a script from your actions, you can copy actions from the Action History and paste them into a script.</p>
+
+<p>To encourage you to keep logging enabled, we only show the Action History when logging is turned on.</p>
+
+<h2>Editing scripts</h2>
+
+<p>The user interface for viewing and editing scripts has been revamped. The improvements include the following:</p>
+
+<ul>
+<li>There is no longer a separate "Edit" mode; you simply click in the line you want to edit and start typing.
+<li>A blinking Record icon makes it more clear when CoScripter is recording your actions.
+<li>There is an area for CoScripter to display messages. 
+</ul>
+
+<h2>Robustness improvements</h2>
+<p>One of the major improvements in this release is stricter interpretation of instructions, to prevent CoScripter from accidentally clicking the wrong buttons while executing a script.  CoScripter will now check that each button label matches the description of the button in its instructions; if it does not find a match, it will stop running the script.  We hope this improvement will make CoScripter more reliable and trustworthy.</p>
+
+<h2>Pause command</h2>
+<p>CoScripter now supports a pause command to instruct the system to wait for several seconds before continuing execution.  To use it, add a step to your script with the form "pause NN seconds", where NN is an integer.  When execution reaches this step, it will pause for the specified number of seconds before resuming on the following step.  This instruction can be used to tell CoScripter to wait for certain pages to finish loading completely, where its own heuristics have failed.</p>
+
+<h2>Showing related scripts</h2>
+
+<p>The CoScripter status icon at the right bottom corner of the Firefox status bar provides quick access to scripts that are relevant to the current web page. Clicking on that icon will open a pop-up menu from which you can access those scripts. The icon indicates how many scripts are available for the current web page by showing a number: 1, 2, 3, or more than 3.</p> 
+
+<div class="notice">
+<p>Because this feature requires sending the current page's address to the CoScripter server, this feature is disabled by default. To enable it, click on the status bar icon and choose "Enable relevant scripts".</p>
+</div>
+
+<h2>Internationalization</h2>
+
+<p>The text in CoScripter's sidebar has been internationalized. It is now possible to create localized versions of CoScripter for different languages by copying and translating the files in the Extension's "Locale" folder.  If you would like to localize CoScripter, please contact Allen Cypher at <a href="mailto:acypher@us.ibm.com">acypher@us.ibm.com</a>.</p>
+
+<p>CoScripter's scripting language is not localizable, since it requires a syntactic parser. If you are a programmer and are interested in creating a script parser for a language other than English, please contact Allen Cypher at <a href="mailto:acypher@us.ibm.com">acypher@us.ibm.com</a>.</p>
+
+<h2>Bugfixes</h2>
+<p>Bugs fixed since M4:
+<ul>
+       <li>Recording would drop steps sporadically</li>
+       <li>Quotes in Labels were not handled correctly</li>
+       <li>Database values were not handled case sensitive</li>
+</ul>
+</p>
+</div>

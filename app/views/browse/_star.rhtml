@@ -1,0 +1,20 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% # Locals: me, is_favorite, procedure %>
+<% if me.nil? %>
+	<%= image_tag("unstar.gif", :border => "0",
+		:title => "Log in to make this script a favorite") %>
+<% else %>
+	<% if is_favorite %>
+	  <%= link_to_remote image_tag("star.gif", :border => "0",
+			:title => "Remove this script from my favorites list"),
+		  :url => {:controller => :browse, :action => "unset_favorite",
+				  :id => procedure.id },
+		  :update => "favorite" %>
+	<% else %>
+	  <%= link_to_remote image_tag("unstar.gif", :border => "0",
+			:title => "Mark this script as a favorite"),
+		  :url => {:controller => :browse, :action => "set_favorite",
+			:id => procedure.id },
+			:update => "favorite" %>
+	<% end %>
+<% end %>

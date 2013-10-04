@@ -1,0 +1,26 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<%
+if not defined? snippet_len
+  snippet_len = nil
+end
+
+snippet = comment.comment
+if not snippet_len.nil?
+  snippet = snip(comment.comment, snippet_len)
+end
+%>
+<div class="comment" id="comment<%= comment.id %>">
+    <div class="comment-body"><%= snippet %></div>
+    <div class="comment-tagline">
+    <% if comment.person %>
+    <%= link_to h(comment.person.name), {:action => 'person', :id => comment.person.shortname} %>
+    <% else %><i>anonymous</i><% end %>
+    &middot; <%= format_commenttime(comment.updated_at) %>
+    <% if not session[:user_id].nil? and Person.find(session[:user_id]) == comment.person %>
+        <%= link_to_remote "(delete)", 
+    	:update => "comment" + comment.id.to_s,
+    	:url => {:action => "delete_comment", :id => comment}
+    	%>
+    <% end %>
+    </div>
+</div>

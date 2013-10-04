@@ -1,0 +1,106 @@
+<!-- (C) Copyright IBM Corp. 2011 -->
+<div class="helptext">
+<h1>CoScripter Tables</h1>
+
+<p>It is possible to import data from a spreadsheet or a web page table into a CoScripter Table, and then iterate over that data to perform a repetitive activity, such as filling in forms.
+</p>
+
+<p><br />
+<b>I. Create a Table</b>
+</p>
+
+<p>You can create a new Table by importing a .csv file, by entering data by hand, or by extracting data from a table on a web page.
+</p>
+
+<p><b>A. Importing a .csv file</b>
+<ul>
+<li>In Excel (or any other spreadsheet application) Use the “Save As…” command to save the spreadsheet in the .csv format (comma-separated-values)
+</li><li>Click the ‘Tables’ tab at the bottom of the CoScripter sidebar.
+</li><li>Click the “New Table…” button. The CoScripter table that appears at the bottom of the window is called a "scratchtable".
+</li><li>Click the “Import” button. CoScripter assumes that the first row in the table is a Header row, containing the names of the columns of the table.
+</li><li>Change “Untitled Table” to a name of your choosing.
+</li><li>Click the “Save” button.
+</li></ul>
+</p>
+
+<p><b>B. Entering data by hand</b>
+<ul><li>Click the ‘Tables’ tab at the bottom of the CoScripter sidebar.
+</li><li>Click the “New Table…” button. The CoScripter table that appears at the bottom of the window is called a "scratchtable".
+</li><li>Double-click in a cell to make it editable.
+</li><li>Type in your data.
+</li><li>You can change the column names from “A”, “B”, etc. to names of your choosing.
+</li><li>Use the “+” signs at the end of the column headers and the row headers to add more columns and rows to the table.
+</li><li>Change “Untitled Table” to a name of your choosing.
+</li><li>Click the “Save” button.
+</li></ul>
+</p>
+
+<p><b>C. Extracting data from a table on a web page</b>
+<ul><li>Click the ‘Tables’ tab at the bottom of the CoScripter sidebar.
+</li><li>Click the “New Table…” button. The CoScripter table that appears at the bottom of the window is called a "scratchtable".
+</li><li>Change “Untitled Table” to a name of your choosing.
+</li><li>Go to a web page that has a table you want to extract.
+</li><li>Click the "Import Data from Web Page..." button.
+</li><li>As you move your mouse over the web page, it will highlight the item beneath. Put your mouse over the item that you want to go into the first column of the first row of your scratchtable, and click the mouse button. The item will be highlighted in yellow, and similar items in the other rows of the web table will be highlighted in gray.
+</li><li>Next, click the item that you want to go into the second column of the first row of your scratchtable. When you have finished clicking on all of the items that you want to go into the first row, click the "Done Selecting. Import Data" button. CoScripter will fill in all of the rows and columns of the scratchtable with the data from the table on the web page.
+
+</li><li>Click the “Save” button, located to the left of the "Import Data from Web Page..." button.
+</li><li>You can later use the commands '* extract the "xxx" table' or '* extract and append the "xxx" table' to automatically extract the table the same way that you demonstrated. 
+</li></ul>
+</p>
+
+<p>Tables are saved to your local hard drive, in the “CoScripterData” folder in your Firefox profile folder.
+</p><p>You can sort by any column by clicking on the column header, but be sure to Save the table first.
+</p>
+
+
+<p><br />
+<b>II. The Repeat command</b>
+</p>
+<p>The main command for iterating over all of the rows in the table is
+</p><p><b>* repeat</b>
+</p><p>The commands to be repeated are indented beneath the “repeat” command.
+</p><p>The first time the “repeat” command is executed, CoScripter looks in the commands indented beneath it for every reference to a row in a scratchtable, and it sets all such row numbers to “1”.
+
+</p><p>Then, each time the “repeat” command is executed again, CoScripter increments all of the references to rows.
+</p><p><i>Tip</i>: you can make an infinite loop by not including any row references beneath the “repeat” command.
+</p>
+
+
+<p><br />
+<b>III. Referring to data in a Table</b>
+</p><p>A reference to a cell in the scratchtable can be used in most any place where a string or a number is used in a CoScripter command.
+</p><p>The general format of the reference is:
+</p>
+
+<ul><li>the cell in the "Price" column of row 3 of the scratchtable
+</li><li>the cell in the your "current topic" column of row 3 of the scratchtable
+</li><li>the cell in column 2 of row 3 of the scratchtable
+</li></ul>
+
+<p>Examples:
+</p>
+
+<ul><li> put "20" into the cell in the "Price" column of row 3 of the scratchtable<br /> (note that you need to use “put” instead of “enter” to modify the scratchtable or the Personal DB)
+</li><li> put the clipboard into the cell in the "Color" column of row 2 of the scratchtable
+</li><li> increment the cell in the "A" column of row 1 of the scratchtable
+</li><li> increment the cell in the "A" column of row 1 of the scratchtable by 5
+</li><li> decrement the cell in the "A" column of row 1 of the scratchtable by your "counter"
+</li><li> enter the cell in the “city” column of row 1 of the scratchtable into the “Location” textbox
+</li><li> copy the cell in the “city” column of row 1 of the scratchtable
+</li><li> paste into the cell in the “city” column of row 1 of the scratchtable
+</li><li> click the link that equals the cell in the “city” column of row 1 of the scratchtable
+</li><li> select the cell in the “city” column of row 1 of the scratchtable from the "city" listbox
+</li><li> if the cell in the "BCG status" column of row 4 of the scratchtable equals "incomplete"
+</li><li> if the cell in the "quantity" column of row 12 of the scratchtable &gt; “1”
+</li><li> if there is a link that equals the cell in the “city” column of row 1 of the scratchtable
+</li></ul>
+
+<p>There is a CoScripter command to open a specific scratchtable:
+</p>
+<ul><li> open the "Chicago Hotels" scratchtable
+</li></ul>
+<p>However, use of this command is optional. References to the scratchtable in a script will use whatever scratchtable happens to be open.
+</p>
+
+</div>

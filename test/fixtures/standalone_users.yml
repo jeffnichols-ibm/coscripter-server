@@ -1,0 +1,6 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+testuserone:
+  id: 1
+  email: abc@def.ghi
+  password: e727d1464ae12436e899a726da5b2f11d8381b26 # SHA1 hash of "mypass"

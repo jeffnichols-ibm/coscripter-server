@@ -1,0 +1,10 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# tessa makes jimmy's script a favorite
+one:
+  procedure_id: 18
+  person_id: 1
+two:
+  procedure_id: 16
+  person_id: 1

@@ -1,0 +1,23 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<table width="100%">
+  <tr>
+    <td>
+      <%if request.post? %>
+	Try it:<br/>
+	<%= link_to "Click Me",@proc_link %><br/>
+	Paste this code into your page to use as an instant procedure:<br>
+	<%= h @paste_code %>
+      <% end %>
+      <% form_tag :action => 'index' do %>
+
+	<p><label for="procedure_title">Title</label><br/>
+	<%= text_field 'procedure', 'title', :style => "width: 100%" %></p>
+
+	<p><label for="procedure_body">Steps</label><br/>
+	<%= text_area 'procedure', 'body', {:style => "width: 100%", :rows => 30} %></p>
+	<%= submit_tag 'Create Instant Script' %>
+      <% end %>
+    </td>
+  </tr>     
+</table>
+

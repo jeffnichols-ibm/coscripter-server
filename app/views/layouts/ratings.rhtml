@@ -1,0 +1,16 @@
+<html>
+<!-- (C) Copyright IBM Corp. 2010 -->
+<head>
+  <title>Ratings: <%= controller.action_name %></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+  <link rel="icon" href="<%= image_path("coscripter-favicon.gif") %>" >
+  <meta name="Robots" content="index,follow" />
+</head>
+<body>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= @content_for_layout %>
+
+</body>
+</html>

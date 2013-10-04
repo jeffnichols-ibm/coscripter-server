@@ -1,0 +1,13 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+tessa_can_use_clemens_script:
+  procedure_id: 28
+  person_id: 1
+
+jimmy_can_use_clemens_script:
+  procedure_id: 28
+  person_id: 2
+
+tessa_can_use_jimmys_script:
+  procedure_id: 29
+  person_id: 1

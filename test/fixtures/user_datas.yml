@@ -1,0 +1,9 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first:
+  id: 1
+  person_id: 1
+  name: teststore
+  value: testvalue
+#another:
+#  id: 2

@@ -1,0 +1,10 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+#first:
+#  id: 1
+#another:
+#  id: 2
+
+recency:
+  id: 1
+  days: 7

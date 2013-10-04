@@ -1,0 +1,17 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% if not item.person.nil? and item.person.id == session[:user_id] %>
+<td>
+  <form action="javascript:void(0)" method="post">
+    <%= check_box_tag("private_check", "1",
+      item.private ? true : false) %>Private
+    <%= observe_field 'private_check',
+      :url => {:action => action_method, :only_path => false,
+        :id => item},
+      :with => "p" %>
+  </form>
+  <span id="private_span"/>
+</td>
+<% else %>
+<!-- not authorized to change privacy setting -->
+<% end %>
+

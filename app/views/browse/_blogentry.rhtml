@@ -1,0 +1,7 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+    <div class="blog-entry">
+        <p class="blog-entry-title"><a href="<%= blogentry.link%>"><%= h(blogentry.title) %></a><br>
+        <span class="blog-author"><%= h(blogentry.author) %></span> <span class="blog-date"><%= blog_date(blogentry) %></span><br>
+        </p>
+        <p><%= blog_text(blogentry,50)%></p>
+    </div>

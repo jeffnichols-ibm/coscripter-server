@@ -1,0 +1,331 @@
+/* (C) Copyright IBM Corp. 2010 */
+body, html {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	margin: 0px;
+	background-image: url(../images/vertical-gradient.png);
+	background-repeat: repeat-x;
+	text-align: center;  /* to make the main area centered in IE */
+}
+
+input {
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: .7em;
+	padding: 0 5px;
+}
+
+.main-area-with-shadows {
+	width: 900px;
+	margin: 0px auto;	
+	background-color: transparent;
+}
+
+.main-coscripter-area {
+	width: 890px;
+	margin: 0px auto;	
+	background-color: #f9f9fa;
+}
+
+.leftShadow {
+	float: left;
+	width: 5px; 
+	height: 2000px;
+	background-color: transparent;
+	background-image: url('/images/right-to-left-shadow.png');
+	background-repeat: repeat-y;
+}
+
+.rightShadow {
+	float: right;
+	width: 5px; 
+	height: 2000px;
+	background-color: transparent;
+	background-image: url('/images/left-to-right-shadow.png');
+	background-repeat: repeat-y;
+}
+
+.header-menu-spacer {
+	background: #FFFFFF; 
+	line-height: 0;
+	height: 5px;	
+}
+
+.banner {
+	background-color: #748195;
+	clear: right;
+	margin-top: 1px;
+	top: 1px;
+}
+
+.banner-image {
+	padding-left: 10px;
+	padding-right: 10px;
+	vertical-align: bottom;
+	width: 112px;
+}
+
+.w3banner {
+	background-color: #759acd;
+	color: #ffffff;
+}
+.w3banner a:link, .w3banner a:visited {
+	color: white;
+}
+
+.footer {
+	background-color: #748195;
+	text-align: center;  /* to make the main area centered in IE */
+	margin-top: 30px;
+	font-size: 0.8em;
+	padding: 0.5em;
+	color: white;
+}
+
+.footer a:link, .footer a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+}
+.footer a:hover, .footer a:visited:hover {
+	background: #939fb2;
+}
+
+input.search {
+  font-weight: bold;
+  color: #ffffff;
+  background: #939fb2;
+  margin: 0;
+  padding: 0.1em;
+  border-top: 1px solid white;
+  border-bottom: 1px solid black;
+  border-left: 1px solid white;
+  border-right: 1px solid black;
+}
+
+input.search:active {
+  border-top: 1px solid black;
+  border-bottom: 1px solid white;
+  border-left: 1px solid black;
+  border-right: 1px solid white;
+}
+
+.top-menus {
+	color: white;
+	font-size: 0.8em;
+	font-weight: bold;
+	margin-left: 40px;
+}
+.top-menus a:link, .top-menus a:visited {
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 3px;
+}
+.top-menus a:hover, .top-menus a:visited:hover {
+	background: #939fb2;
+}
+.about-menus {
+	font-size: 80%;
+	padding-top: 0.25em;
+	padding-right: 10px;
+}
+.about-menus a:link, .about-menus a:visited {
+	padding: 3px;
+}
+
+.search-area {
+	padding-right: 10px;
+}
+
+.search-area, .search-area form, .search-area input {
+	vertical-align: middle;
+}
+
+.search-area form {
+    margin: 0px;
+}
+
+.person_menu {
+	font-size: 80%;
+}
+
+.edit_text {
+    width: 66%;
+    float: left;
+}
+
+.edit_text_inner {
+    padding: 10px;
+}
+
+.edit_instructions {
+    width: 34%;
+    float: right;
+}
+
+.edit_instructions_inner {
+    padding: 10px;
+}
+
+.firefox_install_help_bubble {
+    position: fixed;
+    top: 0;
+    right: 0px;
+    background: #ffff99;
+    width: 250px;
+    border: solid #9D9DA1;
+    border-width: 0 0 1px 1px;
+    padding: 0 1em 0 1em;
+    
+    -moz-border-radius-bottomleft: 10px;
+}
+
+.firefox_install_help_bubble ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.firefox_install_help_bubble li {
+    margin-bottom: 0.5em;
+}
+
+.blog-entry{
+
+}
+.blog-entry-title{
+    font-weight: bold;
+}
+.blog-author{
+}
+.blog-date{
+}
+
+.tostext {
+    padding-left: 3em;
+    padding-right: 3em;
+}
+
+.homebox {
+	background: #eeeeee;
+	-moz-border-radius: 10px;
+	padding: 1em;
+	margin-bottom: 10px;
+	font-size: 9pt;
+}
+.invisible {
+	display: none;
+}
+
+.homebox table {
+	font-size: 9pt;
+}
+
+.homeheader {
+	padding-top: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+.homeheader p {
+	font-size: 9pt;
+}
+
+.featured-script-image {
+	float: right;
+}
+
+.procview3-tr {
+	padding-bottom: 8px;
+}
+.procview3-reason{
+	color: #888;
+}
+ 
+
+.tabheader {
+	border-top: 1px solid #999  ;
+	border-left: 1px solid #999 ;
+	border-right: 1px solid #999 ;
+	padding: 3px;
+	background: #dddddd;
+}
+
+.tabheader a {
+	text-decoration: none;
+	color: black;
+}
+
+.tabheader-selected {
+	border-top: 1px solid #999 ;
+	border-left: 1px solid #999 ;
+	border-right: 1px solid #999 ;
+	padding: 5px;
+	background: #eeeeee;
+}
+
+.tabheader-selected a {
+	text-decoration: none;
+	color: black;
+}
+
+.tab{
+	display:none;
+}
+
+.tab-selected{
+	display:block;
+	border: 1px solid #999;
+	padding: 5px;
+	margin-top: 3px ;
+}
+
+.network_activity tr.new_date {
+	border-top: 1px solid #cccccc;
+}
+
+.network_activity td {
+	vertical-align: top;
+	padding-right: 1em;
+	padding-top: 0.15em;
+	padding-bottom: 0.15em;
+}
+
+.network_activity td.date {
+	white-space: nowrap;
+}
+
+.network_activity td.script_name {
+	padding-right: 0;
+}
+
+.network_activity a {
+	text-decoration: none;
+}
+
+.wish {
+	padding-bottom: 12px;
+}
+
+.wish img, .wish spacer {
+	float: left;
+	margin-right: 8px;
+}
+
+.diff {
+}
+.diffdeleted {
+	background-color: #f9f89e;
+	width: 100%;
+}
+.diffadded {
+	background-color: #9ef9ba;
+	width: 100%;
+}
+
+.homeh1 {
+	font-size: 20pt;
+	font-family: tahoma, arial, sans-serif;
+}
+
+.tagcloudbox {
+	font-weight: bold;
+}

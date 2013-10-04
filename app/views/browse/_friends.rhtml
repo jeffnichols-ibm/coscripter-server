@@ -1,0 +1,8 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+Your friends:
+
+<ul>
+<% for friend in friends %>
+  <li><%= render :partial => 'friend', :object=>friend %></li>
+<% end %>
+</ul>

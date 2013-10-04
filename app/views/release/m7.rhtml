@@ -1,0 +1,112 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter M7 Release Notes" %>
+<div class="releasetext">
+<h1>Release Notes for M7</h1>
+
+<p>Milestone 7 (version 1.700) was released on November 24, 2008.</p>
+
+<h2>More robust script execution</h2>
+
+<p>
+We've revamped the way scripts are run so that a script will now wait for a
+target to become available before continuing to run the script.  This means
+that you probably don't need to use "pause" commands in the vast majority
+of cases, since the "pause" is built in to each command.
+</p>
+
+<h2>Support for back/forward/reload</h2>
+
+<p>
+CoScripter will now record and play back clicks on the browser's back,
+forward, and reload buttons.
+</p>
+
+<h2>Regular expressions for describing targets</h2>
+
+<p>
+CoScripter now supports using regular expressions in target labels.  We
+have special syntax for the special cases "starts with", "ends with", and
+"contains".  The syntax is:
+</p>
+
+<ul>
+<li>click the link that starts with "Phone number"
+</ul>
+
+<p>
+Under the covers, these labels will be converted to a regular expression.  You can also use the regular expression syntax directly, for example:
+</p>
+
+<ul>
+<li>click the r"Phone number.*" link
+</ul>
+
+<p>
+The text inside the double-quotes will be interpreted as a regular
+expression when trying to locate the specified label.
+</p>
+
+<p>
+Note that CoScripter will not record these special labels for you; you have
+to explicitly type them into your script yourself.
+</p>
+
+<h2>XPath support in commands</h2>
+
+<p>
+You can now use XPaths to describe the target widget, rather than a
+human-readable label.  For example:
+</p>
+
+<ul>
+<li>go to "http://google.com"
+<li>enter "ibm" into x"/html/body/center/form/table/tbody/tr/td[2]/input[2]"
+</ul>
+
+<p>
+These commands will not be recorded by this version of CoScripter, but you
+can type them into the script editor yourself if you wish to use this
+functionality.
+</p>
+
+
+<h2>CoScripter as a Platform and Generic Event Recorder</h2>
+
+<p>
+We have rearchitected the CoScripter internals to allow programmers to make
+use of CoScripter functionality from other browser extensions.
+Specifically:
+</p>
+
+<ul>
+<li>The "Your Universal Listener of Events" (YULE) component provides a
+generic facility for recording and aggregating web browser events. This
+component is the fundamental basis for CoScripter recording and provides
+capabilities for recording user input events (such as clicks and text
+entry) as well as events caused by the page changed (such as DOM mutation
+events and page loads). The events recorded by this component can also be
+easily extended.
+
+<li> CoScripter command objects encapsulate actions that the user might
+take in a web browser. Through CoScripter, we now provide facilities for
+recording user actions into command objects, instantiating command objects
+directly in code, and playing back the action associated with a command
+object without having the CoScripter sidebar open. Other browser extensions
+may create and use command objects, which allows CoScripter functionality
+to be explored in other contexts and with other user interface styles.
+</ul>
+
+<p>
+Contact Jeffrey Nichols (<a
+href="mailto:jwnichols@us.ibm.com">jwnichols@us.ibm.com</a>) to learn more
+about these features.
+</p>
+
+<h2>Previous release notes</h2>
+
+<p>
+Notes from previously released versions can be found <%= link_to "here",
+:controller => :release, :only_path => false %>.
+</p>
+
+</div>

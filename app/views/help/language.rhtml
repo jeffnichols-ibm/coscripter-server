@@ -1,0 +1,67 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="helptext">
+<h1>Scripting language</h1>
+
+<p>
+CoScripter's scripting language is very simple.  Each instruction is parsed
+into a set of words, and the current web page is searched to find the
+<i>control</i> (such as a button, link, or text box) that best matches the words in the instruction.  The ordering of the
+words doesn't matter, so "click the koala button" is equivalent to "button
+the click koala".
+</p>
+<p>
+In order to find the best matching control, CoScripter annotates every
+control on the given web page with words describing its type and the actions
+that can be done to it.  For example, a hyperlink is annotated with words
+like "link", "anchor", "click", "press", and "hit".  A text box is
+annotated with words like "field", "text", "textbox", "enter", "type", and
+"fill".  Each control is also annotated with words that appear near or
+inside it on the page.  For example, links are annotated with their link
+text (the words that appear inside the link).
+</p>
+<p>
+CoScripter also understands a few special words, such as "first", "second",
+"third", and "thirty-fourth", as referring to the <i>n</i><sup>th</sup> such control on the
+page.  It also understands words like "top", "bottom", "left", and "right"
+to refer to controls in different parts of the page, e.g., "click the Go
+button on the left".
+</p>
+<p>
+Given these annotated controls and the words in your instruction,
+CoScripter attempts to find the control that best matches the instruction by
+counting the number of words each control has in common with the
+instruction.  The control with the most words in common is chosen as
+CoScripter's best guess.
+</p>
+<p>
+Sometimes CoScripter chooses the wrong action.  In this case, you can
+perform the correct action yourself and try to edit the script to make it
+do the right thing.  We are continually improving CoScripter's ability to
+guess what you meant based on the written instructions.
+</p>
+
+<h2>"You" steps</h2>
+
+<p>
+If a step contains the word "<b>you</b>", CoScripter will assume that it
+does not know how to execute this step, and it will pause execution
+(turning the step red in the sidebar) and wait for you to perform the
+instruction manually.  One use for this type of step is to confirm the
+execution of a step that is potentially destructive or important, such as
+actually placing an order.  Another use is to pause a script and wait for
+the user to read some piece of information, such as terms of use.  Another 
+use is to work around bugs in CoScripter, where
+CoScripter can't programmatically execute something, so you have to tell
+users to do it themselves.
+</p>
+
+<h2>"Your" steps</h2>
+<p>
+Steps that contain the word "your" are interpreted as containing references
+to the user's personal database, a store of name-value pairs that can be
+plugged into scripts to personalize them.  See the <%= link_to "personal
+database", :action => :database %> page for more information about using
+this feature.
+</p>
+
+</div>

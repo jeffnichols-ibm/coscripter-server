@@ -1,0 +1,51 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% spanid = "#{rand}-loadbutton#{procedure.id}" %>
+<span id="<%= spanid %>"></span>
+<%
+if not defined? use_icons
+  use_icons = false
+end
+%>
+
+<script>
+    function openScriptInNewWindow(scriptUrl) {
+	window.open(scriptUrl, "coscripterScriptPopup", "resizable,width=300,height=500,scrollbars,status");
+    }
+    
+    var loadbut = document.getElementById("<%= spanid %>");
+    if (coscripter_version >= 1) {
+	var loadlink = null; 
+	if (coscripter_version >= 1.390) {
+		loadlink = "coscript:" + 
+			    "<%= url_for(:action => "script", :id => procedure,
+				:controller => "api",
+				:only_path => false) %>";
+		
+	}else{
+			loadlink = "coscript:" + 
+			    "<%= url_for(:action => "script", :id => procedure,
+				:controller => "lite",
+				:only_path => false) %>";
+		}
+	<% if use_icons %>
+	loadbut.innerHTML = '<a class="procbuttonimage" href="' +
+	    loadlink + '" title="Open in sidebar">' +
+	    '<%= image_tag 'open-in-sidebar.gif', { :align => "absmiddle" } %>' + "</a>";
+	<% else %>
+	loadbut.innerHTML = '<a class="loadButton procbutton" href="' +
+	    loadlink + '" title="Load into sidebar but don\'t run"><span style="display: none;">' +
+	    <%= procedure.title.to_json %> + "</span></a>";
+	<% end %>
+    } else {
+	var loadLink = 
+	    '<%= url_for(:action => "linkified_script", :id => procedure,
+		:controller => "lite",
+		:only_path => false) %>';
+	<% if use_icons %>
+	loadbut.innerHTML = '<a class="procbuttonimage" href="javascript:openScriptInNewWindow(\'' + loadLink + '\')" title="Open in new window">' + 
+	    '<%= image_tag 'open-in-sidebar.gif', {:align => "absmiddle"} %>' + "</a>";
+	<% else %>
+	loadbut.innerHTML = '<a class="procbutton" href="javascript:openScriptInNewWindow(\'' + loadLink + '\')">Open in New Window</a>';
+	<% end %>
+    }
+</script>

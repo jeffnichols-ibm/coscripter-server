@@ -1,0 +1,34 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div id="mytags">
+
+<div><h3 class="tagcloudbox">My tags</h3></div><br>
+<ul>
+<% 
+for tag in mytags %>
+    <% if session[:user_id] == tag.person.id %>
+	<li><%= link_to tag.raw_name,
+	    { :action => 'tag', :id => tag.clean_name },
+	    { :class => "tag" }
+	    %>&nbsp;<%= link_to_remote "[x]", 
+            	:url => {:action => "delete_tag", :id => tag}
+            	%>
+	</li>
+    <% end %>
+<% end %>
+</ul>
+
+<% if session[:user_id].nil? %>
+    <p><%= render :partial => "loginlink", :locals => {:login_text => "Log in"} %> to add tags</p>
+<% else %>
+    <p>
+    <% form_remote_tag :url => { :action => 'add_tags', :id => @procedure } do %>
+	<label for="raw_tags" style="display: none;">Add tags</label>
+    <%= text_field_tag 'raw_tags', nil, :size => 13 %>
+    <br/>
+    <%= submit_tag "Add tags" %>
+    <% end %>
+    </p>
+	<p>Separate each tag with a space: <i>tech scripting cool</i>. Or to join 2 words together in one tag, use double quotes: <i>"real estate"</i></p>
+<% end %>
+
+</div>

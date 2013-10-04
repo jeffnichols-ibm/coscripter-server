@@ -1,0 +1,21 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<%
+  if not defined? showall
+    showall = false
+  end
+%>
+<% if items.nil? or items.length == 0 %>
+no items
+<% else %>
+  <%= will_paginate items, 
+      :inner_window => 1, 
+      :outer_window => 0,
+      :previous_label => "<span class=\"pagination_image\">#{image_tag("left-arrow.png", {:border => "0"})}</span>",
+      :next_label => "<span class=\"pagination_image\">#{image_tag("right-arrow.png",{:border=>"0"})}</span>",
+      :renderer => ApplicationHelper::CoscripterLinkRenderer
+    %>
+<% end %>
+<% unless params[:page]=="all" or showall == false %>
+  <%=link_to "Show all", { :page=>"all"} ,{:class => "pagination"} -%>
+<% end %>
+

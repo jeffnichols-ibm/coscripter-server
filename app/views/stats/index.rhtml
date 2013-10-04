@@ -1,0 +1,17 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<h1>CoScripter usage statistics</h1>
+<i>As of <%= Time.now %></i>
+<p>
+Total # of people registered: <%= @numpeople %><br/>
+Total # of scripts in system: <%= @numprocs %><br/>
+Total # of private scripts: <%= @numprivateprocs %><br/>
+Scripts created this week: <%= @created_thisweek %> (since <%= @thisweek %>)<br/>
+Scripts modified this week: <%= @modified_thisweek %> (since <%= @thisweek %>)<br/>
+Scripts created in the past month: <%= @created_thismonth %> (since <%= @thismonth %>)<br/>
+Scripts modified in the past month: <%= @modified_thismonth %> (since <%= @thismonth %>)<br/>
+
+<%= link_to "Growth curves", :action => "growth" %><br/>
+<%= link_to "Users by day", :action => "users_by_day" %><br/>
+<%= link_to "Clickthrough stats", :action => "clicks" %><br/>
+</p>
+

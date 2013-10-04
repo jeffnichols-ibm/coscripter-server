@@ -1,0 +1,209 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter: Home" %>
+<script>
+	function dispatchCoScripterCreate(event) {
+		var evt = document.createEvent("Events");
+		evt.initEvent("CoScripterCreateScript", true, false);
+		event.target.dispatchEvent(evt);
+	}
+</script>
+
+<div class="homeheader">
+<%
+# Unavailability notices should go here:
+# <div class="notice" style="text-align: left">CoScripter on w3 will be unavailable from Friday, May 23, 5:00 PM to Tuesday, May 27, 10:00 AM (Pacific Time), due to maintenance during the Memorial Day holiday in the United States.</div>
+%>
+
+<h1>Welcome back to CoScripter!</h1>
+<p>
+CoScripter lets you create and share scripts to automate tasks on the web.
+<%= link_to "(read more)", :controller => :browse, :action => :about %>
+</p>
+
+<div style="display: none;" align="center" id="createbutton">
+<a href="#" onclick="dispatchCoScripterCreate(event)"><%= image_tag "create-script.gif", {:border => 0, :alt => "Create a new script"} %></a>
+</div>
+<script>
+	if (coscripter_version >= 1.700) {
+		var div = document.getElementById("createbutton");
+		div.removeAttribute('style');
+	}
+</script>
+</div>
+
+<div class="leftcolumn"><div class="leftcolumn_inner">
+
+	<% if @recent.length > 0 %>
+    <div class="homebox">
+      <h1>Your recent scripts:</h1>
+	<%= render :partial => 'recent_procedures' , :object => @recent[0,5]%>
+    </div>
+	<% end %>
+
+	<div class="homebox">
+	  <h1><%= image_tag "star.gif", :align => "bottom" %>Your favorite scripts:</h1>
+	<% if @favorites.length > 0 %>
+	  <%= render :partial => "procedures", :object=>@favorites, :locals => { :render_attribute => "recentlytouched" , :source=> "favorites"} %>
+	<% else %>
+	  You don't have any favorite scripts.  To mark a script as a favorite, click
+	  the star icon (<%= image_tag "unstar.gif", :align => "bottom" %>) in the
+	  header section of a script page.
+	<% end %>
+	</div>
+
+	<!-- comments and text -->
+	<% if @mycomments.length > 0 %>
+	<div class="homebox">
+		<h1>Recent comments on your scripts:</h1>
+		<% for @comment in @mycomments[0,5] %>
+
+		  <div class="featured-script-image"><%= render(:partial => 'shared/photo', :locals => {:person => @comment.person, :width => 40, :height => 40}) %></div>
+
+		  <%= link_to h(@comment.procedure.title), :action => "script",
+			  :id => @comment.procedure %>
+		  <%= render :partial => "comment", :object => @comment, :locals => {
+			:snippet_len => 100 } %>
+		<% end %>
+
+		<% if @mycomments.length > 5 %>
+		<div class="morelink">
+			<%= link_to "(more)", :action => 'showcomments',
+			:id => Person.find(session[:user_id]).shortname %>
+		</div>
+		<% end %>
+	</div>
+	<% end %>
+
+	<% if @friend_wishes.length > 0 %>
+	<div class="homebox">
+		<h1><%= image_tag "lamp.gif", :align => "bottom" %>Wishes in your social network:</h1>
+		<p>
+		Your friends have wished for help with the following websites.  Can
+		you grant their wishes and make CoScripts to help them out?
+		</p>
+
+		<% last_person = nil %>
+		<table border="0">
+		<% for wish in @friend_wishes %>
+		<tr>
+		<% if wish.person != last_person %>
+		<td><%= render(:partial => 'shared/photo', :locals =>
+			{:person => wish.person, :width => 40, :height => 40, :align =>
+				'top'}) %></td>
+		<% else %>
+		<td></td>
+		<% end %>
+		<td>
+		<b><%= h(URI.parse(wish.url).host) %></b>: <%= h(snip(wish.wish, 80)) %> <%=
+			link_to "(more)", :controller => :browse, :action => :wish,
+			:id => wish.id %>
+		</td>
+		<% last_person = wish.person %>
+		</tr>
+		<% end %>
+		</table>
+	</div>
+	<% end %>
+
+  </div>
+</div>
+
+<div class="rightcolumn"><div class="rightcolumn_inner">
+
+<!-- "new version available" box -->
+<div class="invisible" id="download_box">
+  <h1>New version available!</h1>
+  <p class="coscripter-panel-body">
+    <%= link_to(image_tag('fficon.gif',
+                        {:border => "0", :alt => 'Firefox',
+                        :class => 'small-icon'}) +
+            'CoScripter ' + render(:partial => 'version') + "&nbsp;for Firefox",
+            { :action => "extension" }) %>
+  (<span id="myversion"></span>)
+  </p>
+</div>
+<script type="text/javascript">
+    // The coscripter_download_version is set by the "version" partial
+    // which was included above
+    if (coscripter_version < coscripter_download_version) {
+        var dbox = document.getElementById("download_box");
+        dbox.setAttribute("class", "homebox");
+    }
+    var v = document.getElementById("myversion");
+    if (coscripter_version > 0) {
+      v.innerHTML = "You have version " + coscripter_version;
+    } else {
+      v.innerHTML = "You do not have CoScripter installed";
+    }
+</script>
+<% if not @featured_script.nil? %>
+<div class="homebox">
+  <h1>Featured script:</h1>
+
+  <div class="featured-script-image"><%= render(:partial => 'shared/photo', :locals => {:person => @featured_script.procedure.person, :width => 40, :height => 40}) %></div>
+
+  <span class="proc_title"><%= link_to h(@featured_script.procedure.title), :action => "script",
+    :id => @featured_script.procedure.id %></span>
+
+  <p>
+    <%= h(@featured_script.description) %>
+  </p>
+</div>
+<% end %>
+
+    <% if @popular.length > 0 %>
+    <div class="homebox">
+      <h1>Currently popular scripts:</h1>
+	<%= render :partial => 'procedures', :object=>@popular[0,5],:locals => {:render_attribute => "popularity" , :source=> "popular"} %>
+	,
+    </div>
+	<% end %>
+
+	<% if not @network_activity.nil? %>
+    <script>
+      var currentTab = "executed" ;
+
+      function tabSelect(tabname){
+        $(currentTab + '_div').removeClassName('tab-selected');
+        $(currentTab + '_div').addClassName('tab');
+
+        $(currentTab + '_tab').removeClassName('tabheader-selected');
+        $(currentTab + '_tab').addClassName('tabheader');
+
+        $(tabname + '_div').addClassName('tab-selected');
+        $(tabname + '_div').removeClassName('tab');
+
+        $(tabname + '_tab').addClassName('tabheader-selected');
+        $(tabname + '_tab').removeClassName('tabheader');
+
+        currentTab = tabname;
+      }
+    </script>
+    <div class="homebox">
+      <h1>Script activity in your social network:</h1>
+      <div>
+        <span class="tabheader-selected" id="executed_tab"><a href="javascript:tabSelect('executed')">Executed</a></span><span class="tabheader" id="modified_tab"><a  href="javascript:tabSelect('modified')">Modified</a></span><span class="tabheader" id="created_tab"><a  href="javascript:tabSelect('created')">Created</a></span>
+      </div>
+      <div class="tab-selected" id="executed_div">
+        <%= render :partial => 'network_activity', :object => @network_activity[:executed] %>
+      </div>
+      <div class="tab" id="modified_div">
+        <%= render :partial => 'network_activity', :object => @network_activity[:modified] %>
+      </div>
+      <div class="tab" id="created_div">
+        <%= render :partial => 'network_activity', :object => @network_activity[:created] %>
+      </div>
+    </div>
+	<% end %>
+
+	<!-- organizational scripts -->
+	<% if @org_scripts.length > 0 %>
+    <div class="homebox">
+      <h1>Popular scripts in your organization:</h1>
+      <div id="organization_scripts" class="tab-selected" style="display:block">
+        <%= render :partial => 'org_scripts', :object => @org_scripts %>
+      </div>
+    </div>
+	<% end %>
+
+</div></div>

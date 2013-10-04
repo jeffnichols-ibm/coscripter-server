@@ -1,0 +1,56 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="helptext">
+<h1>Personal database</h1>
+
+<p>
+CoScripter includes a personal database that you can use to store
+information about yourself or your organization.  This database consists of
+a list of name-value pairs, such as:
+</p>
+
+<blockquote>
+<pre>
+full name = Koala Bear
+work phone number = 555-832-1901
+home zip code = 94041
+</pre>
+</blockquote>
+
+<p>
+When recording a script, CoScripter checks to see whether the value you
+typed into a text box is the same as a value in your personal database.  If
+it finds a match, it will generalize the script and record the instruction
+to enter this particular attribute into the form, rather than the literal
+value you entered.
+</p>
+<p>
+For instance, if "full name = Koala Bear" is a line in your personal
+database, then when you record a script and type "Koala Bear" into the
+Customer field on a web page, CoScripter will record the action as
+</p>
+
+<ul><li> Type your "full name" (e.g. "Koala Bear") in the "Customer" textbox
+</li></ul>
+
+<p>
+When running scripts, CoScripter will check for personal database entries
+whenever it encounters the word <b>your</b> in a script step.    When it
+finds such a step, it will consult your personal database for that entry.
+If it finds it, it will perform that step using the value in your personal
+database.
+</p>
+
+<p>
+For example, if you were executing the step above, and you have an entry in
+your personal database that says "full name = Jane Doe", CoScripter will
+put "Jane Doe" into the Customer text box.
+</p>
+
+<p>
+If you don't have a "full name" entry in your personal database, you can
+just add it!  It's located in the bottom left corner of the CoScripter
+sidebar.  You can type anything you want into your personal database area,
+and the values will be saved for use in future scripts.
+</p>
+
+</div>

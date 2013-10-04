@@ -1,0 +1,14 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<h1>Recent comments to <%= h(@name) %>'s scripts:</h1>
+
+<% if @comments.length > 0 %>
+    <% for comment in @comments %>
+	<%= link_to comment.procedure.title, :action => "script",
+	    :id => comment.procedure %>
+            <%= render :partial => "comment", :object=>comment%>
+    <% end %>
+
+<% else %>
+    <%= h(@name)%>'s scripts have received no comments.
+<% end %>
+

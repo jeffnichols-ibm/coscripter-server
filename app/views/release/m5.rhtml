@@ -1,0 +1,56 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter M5 Release Notes" %>
+<div class="releasetext">
+<h1>Release Notes for M5</h1>
+
+<p>Milestone 5 (version 1.500) was released on April 22, 2008.</p>
+
+<h2>Support for conditional actions</h2>
+
+<p>
+Version M5 now supports conditional actions in scripts.  You have to type
+them in by hand; they can't be recorded.  A conditional has the following
+form:
+<ul>
+<li>if there is a(n) "xxx" link|button|textbox
+</ul>
+</p>
+
+<p>
+You can use recording to figure out what label to use for the
+link/button/textbox.
+</p>
+
+<p>
+If the conditional holds, then any indented steps following the conditional
+will be executed.  If the conditional does not hold, then all indented
+steps will be skipped, and execution will resume at the next line with the
+same indentation as the conditional.
+</p>
+
+<p>
+So for example, this is a script with a conditional:
+<ul>
+<li>if there is a "Login:" textbox
+  <ul>
+  <li>enter your "e-mail address" into the "Login" textbox
+  <li>enter your "password" into the "Password" textbox
+  <li>click the "Login" button
+  </ul>
+<li>click the "My account" link
+</ul>
+</p>
+
+<h2>Various bugfixes</h2>
+
+<ul>
+<li> You can override the script title when saving a copy
+<li> Paste into the editor works better now
+<li> Errors with logging shouldn't cause the whole sidebar to break
+<li> Record urls correctly on pages with frames
+<li> Added a search box to the sidebar welcome page
+<li> Don't add extra lines to the personal database
+<li> Support personal DB substitution in every command
+</ul>
+
+</div>

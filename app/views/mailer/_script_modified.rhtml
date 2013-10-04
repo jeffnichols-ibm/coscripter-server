@@ -1,0 +1,24 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<p>
+<%= @creator.name %> has modified <%= @whichscript %>.<br>
+</p>
+<% if not @changelog.nil? and @changelog != "" %>
+<p>
+The comment was: <%= @changelog %>
+</p>
+<% end %>
+
+<p>
+<%= link_to "View my script", :controller => "browse",
+	:action => "script", :id => @procedure.id, :only_path => false %>
+</p>
+
+<hr>
+
+<div>
+<b><%= @procedure.title %></b>
+</div>
+
+<div>
+<%= script_modified %>
+</div>

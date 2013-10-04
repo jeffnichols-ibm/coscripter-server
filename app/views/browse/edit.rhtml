@@ -1,0 +1,34 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "Editing CoScript" %>
+
+<div class="edit_text"><div class="edit_text_inner">
+
+<br/>
+
+<% form_tag :action => 'update', :id => @procedure do %>
+  <%= render :partial => 'editform' %>
+  <%= submit_tag 'Save changes' %>
+  <%= link_to 'Cancel', :action => 'script', :id => @procedure %>
+<% end %>
+
+</div></div>
+
+<div class="edit_instructions"><div class="edit_instructions_inner">
+
+<h1>Edit a CoScript</h1>
+
+<%= render :partial => "edit_instructions" %>
+
+<div id="coscripter_plug"></div>
+<script type="text/javascript">
+    if (coscripter_version && coscripter_version > 1) {
+        var div = document.getElementById('coscripter_plug');
+        var url = "coscript:" + "<%= url_for(:controller => 'lite',
+          :action => 'script', :id => @procedure, :only_path => false) %>";
+        if (div) {
+          div.innerHTML = 'You can also <a href="' + url + '">open this script in the sidebar</a>.';
+        }
+    }
+</script>
+
+</div></div>

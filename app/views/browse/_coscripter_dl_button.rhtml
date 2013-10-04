@@ -1,0 +1,17 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div class="download-coscripter" style="float:left">
+<p class="coscripter-panel-heading">
+  download coscripter
+</p>
+<p class="coscripter-panel-body">
+  <a href="<%= $profile.xpi_url %>" onclick="installExtension(); return false;">
+  <%= image_tag('fficon.gif',
+                    {:border => "0", :alt => 'Firefox',
+                    :class => 'small-icon'}) +
+      'CoScripter ' + render(:partial => 'version') + "for Firefox" %></a>
+</p>
+<p class="coscripter-panel-body text-below">
+  <span id="yourversion"></span>
+</p>
+</div>
+

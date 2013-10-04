@@ -1,0 +1,37 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter: " + h(@person.name) + "'s scripts" %>
+
+<div class="leftcolumn15">
+   <div class="leftcolumn_inner">
+   </div>
+</div>
+<div class="rightcolumn85">
+   <div class="rightcolumn_inner">
+      
+      <h1>About <%= h(@person.name) %></h1>
+
+      <%= render :partial => "person_menu", :locals => {:person => @person} %>
+      
+      <% if @person.id == session[:user_id] %>
+         <span>
+            <%= link_to "Edit Profile", { :action => "edit_profile", :id => @person.shortname },
+            { :class => "procbutton" } %>
+         </span>
+      <% end %>
+      
+      <p><% if @person.description and @person.description != "" %>
+         <%= format_markdown(@person.description) %>
+      <% else %>
+         <i>No description provided.</i>
+      <% end %>
+      </p>
+      
+      <p>
+      <% if @person.home_page_url and @person.home_page_url != "" %>
+         <a href="<%= @person.home_page_url %>">Home page of <%= h(@person.name) %></a>
+      <% else %>
+         <i>No home page provided.</i>
+      <% end %>
+      </p>
+   </div>
+</div>

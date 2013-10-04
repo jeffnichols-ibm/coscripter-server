@@ -1,0 +1,35 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "Duplicating CoScript" %>
+
+<div class="leftcolumn"><div class="leftcolumn_inner">
+
+<br/>
+<script type="text/javascript">
+    if (coscripter_version < 1) {
+	document.write('<div id="coscripter_plug">');
+	document.write('Install the <a href="<%= $profile.xpi_url %>">CoScripter Firefox extension</a> for additional features!');
+	document.write('</div>');
+    }
+</script>
+
+<!-- no action in the start_form_tag makes it default to the same action -->
+<% form_tag do %>
+  <%= render :partial => 'editform' %>
+  <%= hidden_field_tag 'copyid', @copyid %>
+  <%= submit_tag 'Save changes' %>
+  <%= link_to 'Cancel', :action => 'script', :id => @procedure %>
+<% end %>
+
+
+</div></div>
+<div class="rightcolumn"><div class="rightcolumn_inner">
+
+<h1>Duplicate a CoScript</h1>
+
+<p>
+You are making a copy of a CoScript.  This copy will be owned by you
+and you are free to modifiy it as you wish.
+</p>
+
+<%= render :partial => "edit_instructions" %>
+</div></div>

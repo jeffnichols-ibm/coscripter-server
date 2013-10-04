@@ -1,0 +1,66 @@
+/* (C) Copyright IBM Corp. 2010 */
+.bpac {
+	font-size: 88%;
+	background-color: white;
+	font-family: verdana, sans-serif;
+	position: absolute;
+	z-index: 9048;
+}
+
+* html .bpac {
+	font-size: 85%;
+}
+
+.bpac .yui-ac-content {
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #fff;
+	overflow: hidden;
+	text-align: left;
+	z-index: 9050;
+}
+
+.bpac .yui-ac-shadow {
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin: .3em;
+	background: #a0a0a0;
+	z-index: 9049;
+}
+
+.bpac strong {
+	font-weight: bold;
+}
+
+.bpac-highlighted {
+	background-color: #ffb;
+}
+
+.bpac ul {
+	list-style: none;
+	list-style-type: none;
+	list-style-position: outside;
+	padding: 0 2px 0 0;
+	border: 1px solid gray; 
+	margin: 0;
+}
+
+.bpac li {
+	white-space: nowrap ! important;
+	overflow: hidden;
+	width: 100%;
+	line-height: 100%;
+	padding: 2px 0 2px 1px;
+	margin: 0;
+	cursor: pointer;
+}
+
+.bpac-loc {
+	color: #7a3;
+}
+
+.bpac-mail {
+	color: #69c;
+}

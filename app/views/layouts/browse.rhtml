@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<!-- (C) Copyright IBM Corp. 2010 -->
+<head>
+<title><%= h (@page_title || "CoScripter") %></title>
+<%= stylesheet_link_tag "coscripter", :media => "all" %>
+<%= stylesheet_link_tag "browse", :media => "all" %>
+<%= javascript_include_tag "prototype" %>
+<% if not @page_feed_options.nil? %>
+  <%= auto_discovery_link_tag(:atom, @page_feed_options,
+	{:title => @page_title}) %>
+<% end %>
+<%= @stylesheet %>
+<link rel="icon" href="<%= image_path("coscripter-favicon.gif") %>" >
+<meta name="Robots" content="index,follow" />
+
+<!-- for coscripter extension detection -->
+<script type="text/javascript">
+var coscripter_version = 0;
+</script>
+<%= javascript_include_tag "chrome://coscripter/content/coscripter_version.js" %>
+</head>
+
+<body>
+<div class="main-area-with-shadows">
+<div class="main-coscripter-area">
+	<table cellpadding="0" cellspacing="0" width="100%">
+		<tr class="banner">
+			<td class="banner-image">
+
+			<%= link_to(image_tag("coscripter-logo-white-on-gray.gif",
+				{:border => "0", :width => '141',
+				:height => '38', :alt => 'CoScripter'}),
+				{ :controller => '/' }) %>
+			<a class="skiplink" href="#mainContent">Skip to main content</a>
+			</td>
+			<td class="top-menus">
+
+				<%= link_to "home", { :action => "index",
+				:controller => 'browse' } %> |
+				<%= link_to "download", { :action => "extension",
+				:controller => 'browse' } %> |
+				<%= link_to "all scripts", { :action => "scripts",
+				:controller => 'browse', :sort => "popularity" } %> |
+
+				<% if session[:user_id] %>
+				<%= link_to "my scripts", {:action => 'person',
+					:id => Person.find(session[:user_id]).shortname,
+					:controller => 'browse' }%> |
+				<%= link_to "my profile", {:action => 'profile',
+					:id => Person.find(session[:user_id]).shortname,
+					:controller => 'browse' }%> |
+				<%= link_to "logout", {:action => 'logout',
+					:controller => 'login' }%>
+				<% else %>
+				<%= render :partial => "browse/loginlink" %>
+				<% end %>
+			</td>
+
+			<td class="search-area" align="right">
+		  <% form_tag({ :action => 'search', :controller => "browse"}, {:method => 'get'}) do %>
+		  <label for="q" style="display:none;">Search for scripts</label>
+		  <%= text_field_tag "q" %>
+		  <input type="submit" value="Search" class="search" alt="search" name="search-go" valign="middle" width="20" height="17" border="0" id="search-go">
+		  <% end %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="3" class="header-menu-spacer"></td>
+		</tr>
+		<tr>
+			<td colspan="3" class="about-menus" align="right">
+				<%= link_to "contact", $profile.contact_url %>
+				<% if defined? $profile.blog_url and not $profile.blog_url.nil? %>
+				| <%= link_to "blog", $profile.blog_url %><% end %>
+				<% if defined? $profile.forum_url and not $profile.forum_url.nil? %>
+				| <%= link_to "forum", $profile.forum_url %><% end %>
+				<% if defined? $profile.bugtracker_url and not $profile.bugtracker_url.nil? %>
+				| <%= link_to "bugs", $profile.bugtracker_url %><% end %>
+				| <%= link_to "help", :controller => :help %>
+			</td>
+		</tr>
+	</table>
+
+	<a name="mainContent"></a>
+	<div align="left">
+		<!-- notice messages -->
+	<% if flash[:notice] %>
+		<div id="notice" class="notice"><%= flash[:notice] %></div>
+	<% end %>
+	<div id="js_notice_placeholder">
+	</div>
+		<!-- the main content -->
+		<%= @content_for_layout %>
+	</div>
+<div style="clear: both;"></div>
+
+<div class="footer">
+<% if $profile.needs_registration? %>
+<%= link_to "terms of use", :controller => 'browse', :action => 'tos' %>
+<% end %>
+</div>
+</div>
+</div>
+
+</body>
+</html>

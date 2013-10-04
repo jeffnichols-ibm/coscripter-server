@@ -1,0 +1,18 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+exec1:
+  id: 1
+  executed_at: 2007-07-09 15:31:00
+  person_id: 1
+  procedure_id: 12
+exec2:
+  id: 2
+  executed_at: 2007-07-09 15:32:00
+  person_id: 1
+  procedure_id: 12
+exec3:
+  id: 3
+  executed_at: 2007-07-09 16:02:00
+  person_id: 1
+  procedure_id: 13

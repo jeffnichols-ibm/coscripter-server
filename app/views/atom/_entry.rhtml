@@ -1,0 +1,19 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+
+<% link = url_for(:controller => "browse", :action => "script",
+	:id => entry.id, :only_path => false) %>
+<entry>
+<title><%= h entry.title %></title>
+<link rel="alternate" type="text/html" href="<%= h link %>"/>
+<id><%= h link %></id>
+<author>
+    <name><%= entry.person.nil? ? "anonymous" : h(entry.person.name) %></name>
+    <% if $profile.show_email? %><email><%= entry.person.nil? ? "unknown" : h(entry.person.email) %></email><% end %>
+</author>
+<updated><%= h entry.modified_at.iso8601 %></updated>
+<content type="html">
+<![CDATA[
+<%= format_markdown(entry.body.nil? ? "" : entry.body) %>
+]]>
+</content>
+</entry>

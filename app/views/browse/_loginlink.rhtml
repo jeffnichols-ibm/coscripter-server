@@ -1,0 +1,9 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% 
+  login_text = login_text || "login"
+  redirect = request.env['REQUEST_URI']
+%>
+<%= link_to_unless current_page_no_params?(:action => 'login',
+    :controller => 'login'),
+  login_text, :action => 'login', :controller => 'login',
+  :redirect => redirect %>

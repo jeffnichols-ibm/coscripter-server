@@ -1,0 +1,57 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+tessa:
+  id: 1
+  profile_id: tessalau@us.ibm.com
+  name: Tessa Lau
+  created_at: 2006-09-01 10:00:00
+  updated_at: 2006-09-01 10:00:00
+  accepted_alm_terms: true
+
+jimmy:
+  id: 2
+  profile_id: jameslin@us.ibm.com
+  name: Jimmy Lin
+  created_at: 2006-10-01 11:00:00
+  updated_at: 2006-10-01 11:00:00
+  accepted_alm_terms: true
+  
+no_scripts:
+  id: 3
+  profile_id: user_with_no_scripts@us.ibm.com
+  name: No Scripts
+  created_at: 2006-08-20 10:33:00
+  updated_at: 2006-08-20 10:33:00
+  accepted_alm_terms: true
+
+standalone:
+  id: 4
+  profile_id: abc@def.ghi
+  name: Standalone User
+  created_at: 2008-09-05 14:53:00
+  updated_at: 2008-09-05 14:53:00
+  accepted_alm_terms: true
+
+allen:
+  id: 5
+  profile_id: notallenpsych@us.ibm.com
+  name: Allen Cypher
+  created_at: 2008-12-08 11:00:00
+  updated_at: 2008-12-08 11:00:00
+  accepted_alm_terms: true
+
+test:
+  id: 6
+  profile_id: needsaccept@org
+  name: Needs to Accept Terms
+  created_at: 2008-12-16 18:15:00
+  updated_at: 2008-12-16 18:15:00
+  accepted_alm_terms: false
+
+clemens:
+  id: 7
+  profile_id: nottherightemail@us.ibm.com
+  created_at: 2009-03-05 10:00:00
+  updated_at: 2009-03-05 10:00:00
+  name: Clemens Drews
+  accepted_alm_terms: true

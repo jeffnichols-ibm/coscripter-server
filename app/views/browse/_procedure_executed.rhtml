@@ -1,0 +1,4 @@
+   <!-- (C) Copyright IBM Corp. 2010 -->
+   <%= link_to h(procedure_executed.person.name), {:action => 'person',
+     :id => procedure_executed.person.shortname} %> ran 
+     <%=  link_to h(procedure_executed.procedure.title), { :action => 'script', :id=>procedure_executed.procedure.id }  %> <br/>

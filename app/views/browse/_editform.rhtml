@@ -1,0 +1,14 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<%= error_messages_for 'procedure' %>
+
+<!--[form:procedure]-->
+<p><label for="procedure_title">Title</label><br/>
+<%= text_field 'procedure', 'title', :style => "width: 100%" %></p>
+
+<p><label for="procedure_body">Steps</label><br/>
+<%= text_area 'procedure', 'body', {:style => "width: 100%", :rows => 15} %></p>
+
+<p><label for="changelog">Comment on this change:</label><br/>
+<%= text_field_tag 'changelog', '', :style => "width: 100%" %></p>
+<!--[eoform:procedure]-->
+

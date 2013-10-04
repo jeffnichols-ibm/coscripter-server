@@ -1,0 +1,33 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<table width="100%">
+<%
+  if not defined? render_attribute
+    render_attribute = nil
+  end
+    for procedure in procedures
+%>
+  <tr>
+    <td class="proc_title">
+         <%= link_to h(procedure.title), {:action => 'script',
+	   :id => procedure, :source=> source} %>
+    </td>
+    <td>
+      <%= render :partial => "loadbutton", :locals => { :use_icons => true, :procedure => procedure } %>
+      <%= render :partial => "runbutton", :locals => { :use_icons => true , :procedure => procedure } %>
+    </td>
+  </tr>
+  <tr>
+    <td class="procview3-reason">
+      <%= sortorder_attribute(procedure,render_attribute) %>
+    </td>
+    <td></td> 
+  </tr>
+  <tr>
+    <td colspan="2" class="procview3-tr">
+      <%= h(getSnippet(procedure, 100)) %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+

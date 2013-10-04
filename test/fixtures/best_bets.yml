@@ -1,0 +1,9 @@
+# (C) Copyright IBM Corp. 2010
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+first:
+  id: 1
+  procedure_id: 2
+
+private_bestbet:
+  id: 2
+  procedure_id: 8

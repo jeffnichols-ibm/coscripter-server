@@ -1,0 +1,12 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<% @page_title = "CoScripter: Script authors" %>
+<h1>Script authors</h1>
+
+<% if @people.length == 0 %>
+    No people have created scripts.
+    <%= link_to "Create one.", :action => 'new' %>
+<% end %>
+
+<%= render :partial => 'peopleview' %>
+<%= render :partial => "paginator", :locals => {:items => @people} %>
+

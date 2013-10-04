@@ -1,0 +1,137 @@
+<!-- (C) Copyright IBM Corp. 2010 -->
+<div style="text-align:center">
+
+<div class="content-area">
+<%
+# Unavailability notices should go here:
+# <div class="notice" style="text-align: left">CoScripter on w3 will be unavailable from Friday, May 23, 5:00 PM to Tuesday, May 27, 10:00 AM (Pacific Time), due to maintenance during the Memorial Day holiday in the United States.</div>
+%>
+
+<div class="heading-area">
+  <div class="coscripter-heading-image">
+    <h1><%= image_tag('coscripter-slogan.gif',{:border => 0, :alt => 'Simplifying web-based processes.'})%></h1>
+
+  </div>
+  <p>
+  CoScripter is a system for recording, automating, and sharing
+  processes performed in a web browser such as printing photos online,
+  requesting a vacation hold for postal mail, or checking flight arrival
+  times.  Instructions for processes are recorded and stored in
+  easy-to-read text here on the CoScripter web site, so anyone can make
+  use of them.  If you are having trouble with a web-based process,
+  check to see if someone has written a CoScript for it!
+  </p>
+  <hr/>
+  <p>
+  We are pleased to introduce a new extension to the CoScripter experience 
+  that you already know, called CoScripter Reusable History. This new tool 
+  records everything you do on the web and captures a log of your web browsing 
+  activity in the CoScripter language. You can review your history to find 
+  actions that you do often, convert sequences of actions into reusable scripts, 
+  and share them with your friends. <a href="http://www.youtube.com/watch?v=TyQPwPgbRZQ">
+    Watch a demo of the new extension</a> or <a href="/coscripter/history">download it here</a>.
+  </p>
+  <hr/>
+</div>
+  <div class="panel-row">
+    <div class="download-coscripter" style="float:right">
+      <h2 class="coscripter-panel-heading">
+        download coscripter
+      </h2>
+      <p class="coscripter-panel-body">
+        <%= link_to(image_tag('fficon.gif',
+			    {:border => "0", :alt => 'Firefox',
+			    :class => 'small-icon'}) +
+		'CoScripter ' + render(:partial => 'version') + "&nbsp;for Firefox",
+		{ :action => "extension" }) %>
+      </p>
+      <p class="coscripter-panel-body text-below">
+        <span id="yourversion"></span>
+        <script type="text/javascript">
+          if (coscripter_version > 0) {
+            document.getElementById('yourversion').innerHTML = 'You have: version ' +
+    	      coscripter_version;
+          }
+          else {
+            document.getElementById('yourversion').innerHTML =
+    	    "CoScripter is not installed";
+          }
+        </script>
+      </p>
+    </div>
+    <div class="demo-area">
+      <h2 class="coscripter-panel-heading">
+        watch a demo
+      </h2>
+      <p class="coscripter-panel-body">
+        <%= link_to(image_tag('flashicon.gif',
+			    {:border => "0", :alt => '',
+			    :class => 'small-icon'}) +
+		'video',
+		{ :action => "video" }) %>
+      </p>
+      <p class="coscripter-panel-body">
+        <!-- dummy paragraph to get IE to have right div height for background image -->
+      </p>
+    </div>
+  </div>
+  <hr class="coscripter-divider"/>
+  <div class="coscripter-sidebar">
+    <div class="coscripter-search">
+      <h2>Search for a script</h2>
+      <p>
+        <% form_tag( { :action => 'search' }, { :method => 'get' } ) do %>
+		<label for="q" style="display:none;">Search for scripts</label>
+        <%= text_field_tag("q",nil,{:id => 'coscripter-search-body-textbox'}) %> 
+        <%= submit_tag("Search",{:id => 'coscripter-search-body-button'}) %>
+        <% end %>
+      </p>
+      <p>
+        Browse scripts by:<br/>
+        <%= link_to "Most Popular", { :action => "scripts",
+		:controller => 'browse', :sort => "popularity" } %> |
+        <%= link_to "Most Used", { :action => "scripts",
+		:controller => 'browse', :sort => "usage" } %> |
+        <%= link_to "Recently Modified", { :action => "scripts",
+		:controller => 'browse', :sort => "modified" } %> |
+        <%= link_to "Script Creator", { :action => "scripts",
+		:controller => 'browse', :sort => "creator" } %>
+      </p>
+    </div>
+    <div class="recommended-scripts">
+      <h2>Recommended scripts</h2>
+      <%= render :partial => 'procedures', :object=>@bestbets, :locals => { :render_attribute => "recentlytouched" , :source=> "favorites"} %>
+    </div>
+  </div>
+  <div class="other-coscripter-content">
+  <h2>Contribute!</h2>
+  <p>
+    The scripts available on this site have been authored by our large
+    community of users who help each other by contributing scripts that
+    automate their most difficult web-based processes.  You can make
+    the community stronger by contributing your own scripts for the 
+    processes that you do frequently.  Together we can make the web 
+    easier to use!
+  </p>
+  <h2>Software</h2>
+  <p>
+    An important part of the CoScripter experience is our custom browser extension for 
+    Mozilla Firefox that automates the process of recording and playing back 
+    processes.  To download and install the extension, <%= link_to "visit our download page", :action => 'extension' %>.  If you don't use the Firefox browser, you can still
+    use the instructions provided by the scripts to manually complete web-based
+    processes.
+  </p>
+  <h2>More information</h2>
+  <p>
+    CoScripter is still a research project, and we are anxious to get your feedback so that we can improve the system.
+    If you have any comments, please <a href="<%= $profile.forum_url %>">post to the forum</a> or feel free to
+    <a href="<%= $profile.contact_url %>">send us email</a>.
+  </p>
+  <p>
+    For more information about using CoScripter, visit the
+    <%= link_to "help documentation", :controller => :help %>.
+  </p>
+  </div>
+</div>
+
+</div>
